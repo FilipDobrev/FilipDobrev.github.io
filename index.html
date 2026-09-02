@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Filip Dobrev, software engineer in Delft</title>
+<meta name="description" content="Filip Dobrev builds software, improves how teams ship it, and reviews the security of what is already running. Published prices, Delft, remote across Europe.">
+<meta name="theme-color" content="#14161C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   v11. The poster structure of v9, the controls of v10.
+
+   From v9: full-bleed colour fields meeting at hard edges, the
+   stepped practice stack, and the scope docked to the bottom of
+   the window where a visitor can see the running total from
+   anywhere on the page.
+
+   From v10: soft radii on anything you can act on, the banded
+   catalogue, and colour that means exactly one thing, which is
+   which practice a service belongs to. Actions stay neutral,
+   maximum contrast against whichever field they sit on, so they
+   never compete with the taxonomy.
+
+   Radius rule, no exceptions:
+     14px on surfaces (cards, the dock panel)
+     10px on controls (buttons, the segmented filter, inputs)
+   Bands are full bleed, so they have no corners to round.
+
+   Still absent: floating pill navigation, radial-gradient
+   ambience, shadow lift on hover, chip rows, accent rails.
+   ============================================================ */
+
+:root{
+  /* fields */
+  --ink:#14161C;
+  --ink-2:#1B1E26;
+  --paper:#EDEDEB;
+  --paper-2:#E2E2DF;
+  --surface:#F9F9F8;
+
+  /* type */
+  --text:#14161C;
+  --text-dim:#55585F;
+  --on-ink:#EDEDEB;
+  --on-ink-dim:#90939C;
+
+  /* Practice colour, in two sets. The dark set is for light
+     fields, the -lt set for ink fields, because none of the
+     dark three clears 3:1 against #14161C. Every value below
+     passes 4.5:1 as type on the field it is used on. */
+  --build:#2440C4;    --build-lt:#6E8CFF;
+  --improve:#8A5200;  --improve-lt:#E0A44A;
+  --review:#C1005E;   --review-lt:#FF5FA8;
+  --p:var(--text);
+
+  /* hairlines are decorative, --edge is for control boundaries */
+  --line:rgba(20,22,28,.13);
+  --line-2:rgba(20,22,28,.22);
+  --edge:#7E8189;
+  --line-ink:rgba(237,237,235,.15);
+  --line-ink-2:rgba(237,237,235,.28);
+  --edge-ink:#6A6E7A;
+
+  --display:"Gabarito","Segoe UI",system-ui,sans-serif;
+  --sans:"Manrope","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",monospace;
+
+  --r-lg:14px;
+  --r-sm:10px;
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gut:clamp(20px,5vw,76px);
+  --nav-h:60px;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scrollbar-gutter:stable}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;background:var(--ink);color:var(--on-ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  touch-action:manipulation;-webkit-tap-highlight-color:rgba(237,237,235,.14);
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px;border-radius:2px}
+.dk :focus-visible{outline-color:var(--on-ink)}
+
+.skip{
+  position:absolute;left:var(--gut);top:-100px;z-index:90;
+  background:var(--on-ink);color:var(--ink);font-weight:700;
+  padding:12px 18px;border-radius:var(--r-sm);text-decoration:none;
+  transition:top .2s var(--ease);
+}
+.skip:focus{top:12px}
+
+/* practice colour resolution. The .dk switch is what keeps the
+   three hues legible when a band flips to ink. */
+[data-practice="build"]{--p:var(--build)}
+[data-practice="improve"]{--p:var(--improve)}
+[data-practice="review"]{--p:var(--review)}
+.dk [data-practice="build"],.dk[data-practice="build"]{--p:var(--build-lt)}
+.dk [data-practice="improve"],.dk[data-practice="improve"]{--p:var(--improve-lt)}
+.dk [data-practice="review"],.dk[data-practice="review"]{--p:var(--review-lt)}
+
+/* ---------------- type ---------------- */
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.032em;line-height:1.04;text-wrap:balance}
+h1{font-size:clamp(2.4rem,6vw,4.5rem);font-weight:800;letter-spacing:-.042em}
+h2{font-size:clamp(1.8rem,3.8vw,2.8rem)}
+h3{font-size:1.05rem;font-weight:600;letter-spacing:-.018em;line-height:1.3}
+p{margin:0;text-wrap:pretty}
+
+.lede{font-size:clamp(1.02rem,1.5vw,1.2rem);line-height:1.55;max-width:46ch}
+.small{font-size:.92rem;line-height:1.56}
+.dim{color:var(--text-dim)}
+.dk .dim,.dk .lede{color:var(--on-ink-dim)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.17em;text-transform:uppercase;
+  color:var(--text-dim);margin:0 0 16px;
+}
+.dk .eyebrow{color:var(--on-ink-dim)}
+
+/* ---------------- fields ---------------- */
+.band{padding:clamp(60px,9vw,116px) var(--gut)}
+.band--ink{background:var(--ink);color:var(--on-ink)}
+.band--ink2{background:var(--ink-2);color:var(--on-ink)}
+.band--paper{background:var(--paper);color:var(--text)}
+.band--paper2{background:var(--paper-2);color:var(--text)}
+.wrap{max-width:1200px;margin:0 auto}
+.h-gap{margin-bottom:clamp(30px,4vw,52px)}
+
+/* ---------------- the constant rail ---------------- */
+.rail{
+  position:sticky;top:0;z-index:60;height:var(--nav-h);
+  background:var(--ink);border-bottom:1px solid var(--line-ink);
+  display:flex;align-items:center;gap:26px;
+  padding-left:max(var(--gut),env(safe-area-inset-left));
+  padding-right:max(var(--gut),env(safe-area-inset-right));
+}
+.rail__name{font-family:var(--display);font-weight:800;font-size:1.02rem;letter-spacing:-.038em;color:var(--on-ink);text-decoration:none;white-space:nowrap}
+.rail__nav{display:flex;gap:24px;margin-left:auto}
+.rail__nav a{font-size:.89rem;color:var(--on-ink-dim);text-decoration:none;white-space:nowrap;transition:color .25s var(--ease)}
+.rail__nav a:hover{color:var(--on-ink)}
+.rail__nav a.here{color:var(--on-ink)}
+@media (max-width:880px){.rail__nav{display:none}}
+
+/* ---------------- buttons ---------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:.95rem;font-weight:600;
+  padding:14px 22px;border-radius:var(--r-sm);text-decoration:none;
+  white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  transition:background-color .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease),transform .2s var(--ease);
+}
+.btn:active{transform:translateY(1px)}
+.btn--fill{background:var(--text);color:var(--paper)}
+.btn--fill:hover{background:#2B2F3A}
+.btn--line{background:transparent;color:var(--text);border-color:var(--edge)}
+.btn--line:hover{border-color:var(--text);background:rgba(20,22,28,.05)}
+.dk .btn--fill{background:var(--on-ink);color:var(--ink)}
+.dk .btn--fill:hover{background:#FFFFFF}
+.dk .btn--line{color:var(--on-ink);border-color:var(--edge-ink)}
+.dk .btn--line:hover{border-color:var(--on-ink);background:rgba(237,237,235,.08)}
+
+/* ---------------- hero ---------------- */
+.hero{
+  padding-top:clamp(52px,8vw,96px);
+  padding-bottom:clamp(52px,8vw,96px);
+  min-height:calc(100dvh - var(--nav-h));
+  display:flex;align-items:center;
+}
+.hero__grid{
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);
+  gap:clamp(30px,5vw,76px);align-items:end;width:100%;
+}
+.hero__aside{padding-bottom:4px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+@media (max-width:900px){
+  .hero{min-height:0}
+  .hero__grid{grid-template-columns:1fr;align-items:start;gap:28px}
+}
+
+/* ---------------- worked at ---------------- */
+.worked{padding-top:clamp(26px,4vh,40px);padding-bottom:clamp(26px,4vh,40px);border-top:1px solid var(--line-ink)}
+.worked__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px clamp(22px,4vw,50px)}
+.worked__row span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--on-ink-dim);margin-right:8px}
+.worked__row b{font-family:var(--display);font-weight:600;font-size:clamp(1.02rem,2vw,1.5rem);letter-spacing:-.034em;color:var(--on-ink)}
+
+/* ---------------- practices, the stepped stack ---------------- */
+.practices{display:grid;gap:clamp(28px,4vw,50px)}
+.practice{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(14px,3vw,44px);align-items:start;
+  padding-top:24px;border-top:2px solid var(--p);
+}
+.practice h3{font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:700;letter-spacing:-.036em;color:var(--p)}
+.practice__when{font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-dim);margin:0 0 10px}
+.practice p{color:var(--text-dim);max-width:56ch}
+.practice a{
+  display:inline-block;margin-top:14px;font-size:.9rem;font-weight:600;
+  color:var(--p);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb,var(--p) 40%,transparent);
+  padding-bottom:2px;transition:border-color .25s var(--ease);
+}
+.practice a:hover{border-color:currentColor}
+@media (min-width:900px){
+  .practice:nth-child(2){margin-left:8%}
+  .practice:nth-child(3){margin-left:16%}
+}
+@media (max-width:760px){.practice{grid-template-columns:1fr;gap:12px}}
+
+.claim{
+  margin-top:clamp(44px,6vw,78px);padding-top:clamp(28px,4vw,42px);
+  border-top:1px solid var(--line);
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.1rem,2.2vw,1.65rem);line-height:1.32;
+  letter-spacing:-.028em;max-width:34ch;
+}
+.claim em{font-style:normal;font-weight:700;color:var(--review)}
+
+/* ---------------- catalogue ---------------- */
+.cat__top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:24px}
+.rate-note{font-family:var(--mono);font-size:12px;color:var(--text-dim);line-height:1.75;text-align:right}
+.rate-note b{color:var(--text);font-weight:500}
+
+.seg{
+  position:relative;display:inline-flex;padding:4px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-sm);margin-bottom:13px;max-width:100%;
+  overflow:auto;scrollbar-width:none;
+}
+.seg::-webkit-scrollbar{display:none}
+.seg__thumb{
+  position:absolute;top:4px;left:0;height:calc(100% - 8px);width:100px;
+  background:var(--text);border-radius:8px;
+  transform-origin:left center;transform:scaleX(0);
+  transition:transform .4s var(--ease);pointer-events:none;
+}
+.seg button{
+  position:relative;z-index:1;flex:none;
+  font-family:var(--sans);font-size:.9rem;font-weight:600;
+  padding:9px 18px;border:0;background:transparent;color:var(--text-dim);
+  cursor:pointer;border-radius:8px;white-space:nowrap;
+  transition:color .3s var(--ease);
+}
+.seg button:hover{color:var(--text)}
+.seg button[aria-pressed="true"]{color:var(--paper)}
+@media (prefers-reduced-motion:reduce){.seg__thumb{transition:none}}
+
+.filter-status{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-dim);
+  font-variant-numeric:tabular-nums;margin:0 0 26px;
+}
+
+.group{margin-top:clamp(30px,3.6vw,46px);padding-top:22px;border-top:2px solid var(--p)}
+.group.first{margin-top:0} /* set in JS, a hidden band is still :first-child */
+.group[hidden]{display:none}
+.group__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin-bottom:18px}
+.group__head h3{font-family:var(--display);font-size:clamp(1.3rem,2.3vw,1.7rem);font-weight:700;letter-spacing:-.036em;color:var(--p)}
+.group__when{font-size:.92rem;color:var(--text-dim)}
+.group__count{margin-left:auto;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:560px){.group__count{margin-left:0}}
+
+.cards{display:grid;gap:13px;grid-template-columns:repeat(auto-fill,minmax(302px,1fr))}
+.card{
+  display:flex;flex-direction:column;
+  background:color-mix(in srgb,var(--p) 5%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--p) 42%,transparent);
+  border-radius:var(--r-lg);
+  transition:border-color .25s var(--ease),background-color .25s var(--ease);
+}
+.card:hover{border-color:color-mix(in srgb,var(--p) 72%,transparent)}
+.card:has(input:checked){border-color:var(--p);background:color-mix(in srgb,var(--p) 11%,var(--surface))}
+.card__body{padding:19px 19px 17px}
+.card__row{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+.card__name{font-family:var(--display);font-weight:600;font-size:1.06rem;letter-spacing:-.026em;line-height:1.22}
+.card__price{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.04em;font-size:.92rem;font-weight:500;white-space:nowrap}
+.card__days{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);font-variant-numeric:tabular-nums;margin-top:6px}
+.card p:not(.card__days){margin-top:11px;font-size:.9rem;line-height:1.56;color:var(--text-dim)}
+
+.add{
+  margin-top:auto;display:flex;align-items:center;gap:10px;
+  padding:13px 19px;cursor:pointer;
+  border-top:1px solid color-mix(in srgb,var(--p) 24%,transparent);
+  font-size:.88rem;font-weight:500;color:var(--text-dim);
+  transition:color .25s var(--ease);
+}
+.add:hover{color:var(--text)}
+.card:has(input:checked) .add{color:var(--p)}
+.add input{
+  appearance:none;-webkit-appearance:none;margin:0;flex:none;
+  width:18px;height:18px;border:1.5px solid var(--edge);border-radius:5px;
+  background:var(--surface);cursor:pointer;display:grid;place-content:center;
+  transition:background-color .2s var(--ease),border-color .2s var(--ease);
+}
+.add input::after{
+  content:"";width:9px;height:5px;
+  border-left:2px solid #fff;border-bottom:2px solid #fff;
+  transform:rotate(-45deg) scale(0);transition:transform .22s var(--ease);
+}
+.add input:checked{background:var(--p);border-color:var(--p)}
+.add input:checked::after{transform:rotate(-45deg) scale(1)}
+
+/* ---------------- recurring ---------------- */
+.recur{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:13px}
+.recur > div{border:1px solid var(--line-ink);border-radius:var(--r-lg);padding:23px}
+.recur .fig{display:block;font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.04em;font-size:1.2rem;color:var(--on-ink);font-weight:500;margin:8px 0 12px}
+
+/* ---------------- method ---------------- */
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(278px,1fr));gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.method li{padding:24px clamp(18px,2.4vw,32px) 24px 0;border-bottom:1px solid var(--line)}
+.method h3{margin-bottom:7px;color:var(--text-dim)}
+.method h3 span{color:var(--text)}
+.method p{font-size:.91rem;line-height:1.56;color:var(--text-dim);max-width:40ch}
+
+/* ---------------- what I don't do ---------------- */
+.limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(24px,3vw,40px) clamp(30px,4.5vw,68px)}
+.limit b{display:block;font-family:var(--display);font-weight:600;font-size:1.04rem;letter-spacing:-.024em;margin-bottom:7px;color:var(--on-ink)}
+.limit p{font-size:.92rem;line-height:1.56;color:var(--on-ink-dim);max-width:44ch}
+
+/* ---------------- work ---------------- */
+.work{display:grid;grid-template-columns:repeat(12,1fr);gap:13px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:23px;grid-column:span 6}
+.proj--lead{grid-column:span 12;border-color:var(--line-2)}
+.proj--lead h3{font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.8rem);font-weight:700;letter-spacing:-.036em}
+.proj__year{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:var(--text-dim);margin:0 0 9px}
+.proj h3{margin-bottom:9px}
+.proj p{font-size:.91rem;line-height:1.56;color:var(--text-dim);max-width:62ch}
+@media (max-width:860px){.proj{grid-column:span 12}}
+
+.creds{margin-top:clamp(32px,4.5vw,54px);padding-top:clamp(26px,3.5vw,40px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:18px clamp(28px,4.5vw,60px)}
+.cred b{display:block;font-family:var(--display);font-weight:600;font-size:.97rem;letter-spacing:-.022em;margin-bottom:2px}
+.cred span{font-size:.88rem;color:var(--text-dim)}
+
+/* ---------------- contact ---------------- */
+.contact{padding-bottom:clamp(130px,17vh,190px)}
+.contact__grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(30px,5vw,72px);align-items:start}
+.mailto{
+  display:inline-block;margin-top:22px;
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(1.2rem,2.6vw,2rem);letter-spacing:-.04em;
+  color:var(--on-ink);text-decoration:none;
+  border-bottom:2px solid var(--line-ink-2);padding-bottom:3px;
+  transition:border-color .25s var(--ease);word-break:break-word;
+}
+.mailto:hover{border-color:var(--on-ink)}
+.facts{margin:0;border-top:1px solid var(--line-ink-2)}
+.facts div{display:grid;grid-template-columns:104px 1fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-ink);font-size:.92rem}
+.facts dt{color:var(--on-ink-dim)}
+.facts dd{margin:0}
+.facts a{text-decoration:none;border-bottom:1px solid var(--line-ink-2)}
+.facts a:hover{border-color:var(--on-ink)}
+@media (max-width:860px){.contact__grid{grid-template-columns:1fr}}
+
+.foot{padding:22px var(--gut) 28px;background:var(--ink);border-top:1px solid var(--line-ink);display:flex;flex-wrap:wrap;gap:8px 26px;font-size:.84rem;color:var(--on-ink-dim)}
+.foot a{text-decoration:none;border-bottom:1px solid var(--line-ink)}
+.foot a:hover{color:var(--on-ink)}
+
+/* ---------------- the docked scope ---------------- */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:var(--ink-2);border-top:1px solid var(--line-ink-2);
+  transform:translateY(102%);visibility:hidden;
+  transition:transform .42s var(--ease),visibility 0s linear .42s;
+}
+.dock.up{transform:translateY(0);visibility:visible;transition-delay:0s,0s}
+
+.dock__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--ease)}
+.dock__panel.open{grid-template-rows:1fr}
+.dock__panel > div{overflow:hidden}
+.dock__list{
+  margin:0;padding:14px var(--gut) 4px;list-style:none;
+  max-height:min(38dvh,320px);overflow-y:auto;overscroll-behavior:contain;
+}
+.dock__list li{display:grid;grid-template-columns:1fr auto;gap:3px 16px;padding:11px 0;border-bottom:1px solid var(--line-ink)}
+.dock__list li:last-child{border-bottom:0}
+.dock__list .nm{font-weight:500;font-size:.94rem;color:var(--on-ink)}
+.dock__list .pr{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.04em;font-size:.89rem;white-space:nowrap;color:var(--on-ink)}
+.dock__list .mt{grid-column:1/-1;font-family:var(--mono);font-size:11px;color:var(--on-ink-dim);font-variant-numeric:tabular-nums}
+.dock__list .pt{color:var(--p);letter-spacing:.14em;text-transform:uppercase;margin-right:10px}
+.dock__note{padding:10px var(--gut) 16px;margin:0;font-size:.81rem;color:var(--on-ink-dim);max-width:62ch}
+
+.dock__bar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;
+  padding:12px var(--gut);
+  padding-bottom:max(12px,env(safe-area-inset-bottom));
+}
+.dock__toggle{
+  display:flex;align-items:baseline;gap:6px 16px;flex-wrap:wrap;
+  background:none;border:0;padding:6px 0;cursor:pointer;
+  color:var(--on-ink);text-align:left;font-family:var(--sans);
+}
+.dock__toggle .cnt{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-ink-dim);font-variant-numeric:tabular-nums}
+.dock__toggle .tot{font-family:var(--display);font-weight:800;font-size:clamp(1.1rem,2.4vw,1.55rem);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.dock__toggle .chev{
+  width:8px;height:8px;flex:none;align-self:center;
+  border-right:1.8px solid var(--on-ink-dim);border-bottom:1.8px solid var(--on-ink-dim);
+  transform:rotate(-135deg) translate(-1px,-1px);
+  transition:transform .3s var(--ease);
+}
+.dock__toggle[aria-expanded="true"] .chev{transform:rotate(45deg) translate(-2px,-2px)}
+.dock__toggle:hover .chev{border-color:var(--on-ink)}
+.dock__acts{display:flex;align-items:center;gap:8px;margin-left:auto}
+.dock__clear{background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:.88rem;font-weight:500;color:var(--on-ink-dim);padding:13px 10px}
+.dock__clear:hover{color:var(--on-ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:620px){
+  .dock__acts{width:100%;margin-left:0}
+  .dock__acts .btn{flex:1}
+}
+
+/* ---------------- motion ---------------- */
+@media (prefers-reduced-motion:no-preference){
+  .group.swap .card{animation:cardIn .42s var(--ease) both}
+  .group.swap .card:nth-child(2){animation-delay:.05s}
+  .group.swap .card:nth-child(3){animation-delay:.1s}
+  .group.swap .card:nth-child(4){animation-delay:.15s}
+  .group.swap .card:nth-child(n+5){animation-delay:.2s}
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.rise{opacity:0;transform:translateY(16px);transition:opacity .68s var(--ease),transform .68s var(--ease)}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+  .dock,.dock__panel,.card,.btn,.add input::after,.dock__toggle .chev{transition:none}
+  *{animation:none!important}
+}
+
+h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="rail dk">
+  <a class="rail__name" href="#top" translate="no">Filip Dobrev</a>
+  <nav class="rail__nav" aria-label="Sections">
+    <a href="#practices">Practices</a>
+    <a href="#services">Services &amp; Prices</a>
+    <a href="#method">How It Works</a>
+    <a href="#limits">What I Don&rsquo;t Do</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ hero ============ -->
+  <section class="band band--ink dk hero" id="top">
+    <div class="wrap hero__grid">
+      <h1 class="rise">Software that holds up after it ships.</h1>
+      <div class="hero__aside rise">
+        <p class="lede">One engineer who builds it, improves how you ship it, and reviews its security. Prices are published below.</p>
+        <div class="hero__cta">
+          <a class="btn btn--fill" href="#services">See Services &amp; Prices</a>
+          <a class="btn btn--line" href="mailto:filipdbrv@gmail.com?subject=Project%20enquiry">Email Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ worked at ============ -->
+  <section class="band band--ink dk worked" aria-label="Where I have worked">
+    <div class="wrap worked__row rise">
+      <span>Worked at</span>
+      <b translate="no">Uber</b>
+      <b translate="no">TU&nbsp;Delft</b>
+      <b translate="no">It Goes Forward</b>
+      <b translate="no">Vera Connect</b>
+    </div>
+  </section>
+
+  <!-- ============ practices ============ -->
+  <section class="band band--paper" id="practices" aria-labelledby="practices-h">
+    <div class="wrap">
+      <h2 id="practices-h" class="h-gap rise">Three ways this usually starts</h2>
+      <div class="practices">
+        <article class="practice rise" data-practice="build">
+          <div>
+            <p class="practice__when">It does not exist yet</p>
+            <h3>Build</h3>
+          </div>
+          <div>
+            <p>From a marketing site to the first version of a product. You get the repository, the pipeline and the documentation, and it ships running rather than nearly running.</p>
+            <a href="#services" data-jump="build">See what building costs</a>
+          </div>
+        </article>
+        <article class="practice rise" data-practice="improve">
+          <div>
+            <p class="practice__when">It works, but it costs the team time</p>
+            <h3>Improve</h3>
+          </div>
+          <div>
+            <p>The deploy that eats an evening, the spreadsheet somebody rebuilds every Monday, the outage your customers report before you notice. Ranked by hours saved per month.</p>
+            <a href="#services" data-jump="improve">See what improving costs</a>
+          </div>
+        </article>
+        <article class="practice rise" data-practice="review">
+          <div>
+            <p class="practice__when">It is live and you are worried</p>
+            <h3>Review</h3>
+          </div>
+          <div>
+            <p>What an attacker sees, where your keys live, what one codebase actually gets wrong, and where your users get stuck. Findings ranked by business impact, each with the fix written out.</p>
+            <a href="#services" data-jump="review">See what reviewing costs</a>
+          </div>
+        </article>
+      </div>
+      <p class="claim rise">Most people who build software have never attacked any. Most people who attack it have never had to ship. <em>I do both.</em></p>
+    </div>
+  </section>
+
+  <!-- ============ catalogue ============ -->
+  <section class="band band--paper2" id="services">
+    <div class="wrap">
+      <div class="cat__top rise">
+        <div>
+          <p class="eyebrow">Services &amp; Prices</p>
+          <h2>All fourteen, priced. Tick what you need.</h2>
+        </div>
+        <p class="rate-note">
+          Every price is days &times; day rate<br>
+          <b>&euro;350 &ndash; 550 per day</b>
+        </p>
+      </div>
+
+      <div class="seg rise" id="seg" role="group" aria-label="Filter services by practice">
+        <span class="seg__thumb" id="segThumb" aria-hidden="true"></span>
+        <button type="button" data-filter="all" aria-pressed="true">All 14</button>
+        <button type="button" data-filter="build" aria-pressed="false">Build</button>
+        <button type="button" data-filter="improve" aria-pressed="false">Improve</button>
+        <button type="button" data-filter="review" aria-pressed="false">Review</button>
+      </div>
+
+      <p class="filter-status" id="filterStatus" role="status"></p>
+
+      <div class="rise" id="cards"></div>
+
+      <p class="small dim rise" style="margin-top:22px;max-width:62ch">
+        Ranges are honest, not anchors. The scope call turns a range into one number, and that number goes in the written brief before anything starts.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ recurring ============ -->
+  <section class="band band--ink2 dk" aria-labelledby="recur-h">
+    <div class="wrap">
+      <h2 id="recur-h" class="h-gap rise">Ongoing, not per project</h2>
+      <div class="recur rise">
+        <div>
+          <h3>Retained upkeep</h3>
+          <span class="fig">&euro;100 &ndash; 350 / month</span>
+          <p class="small dim">Dependency and security updates, certificate and backup checks, uptime monitoring, and a person who already knows your system when something breaks.</p>
+        </div>
+        <div>
+          <h3>Embedded with your team</h3>
+          <span class="fig">&euro;350 &ndash; 550 / day</span>
+          <p class="small dim">Booked days inside your team, your board and your standups. For when the work is continuous and a fixed scope would only get in the way.</p>
+        </div>
+      </div>
+      <p class="small dim rise" style="margin-top:22px;max-width:62ch">
+        Both are kept out of the scope builder on purpose. A monthly retainer and a day rate are not project costs, and adding them to a project total would only make the number wrong.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ method ============ -->
+  <section class="band band--paper" id="method" aria-labelledby="method-h">
+    <div class="wrap">
+      <h2 id="method-h" class="h-gap rise">Six steps, and you can leave after the first</h2>
+      <ol class="method">
+        <li class="rise"><h3><span>Scope call.</span> Thirty minutes, free.</h3><p>What you have, what you need, and what a good outcome looks like. If I am the wrong person, I say so on this call.</p></li>
+        <li class="rise"><h3><span>Written brief.</span></h3><p>What is being built, improved or tested, what is explicitly out of scope, the timeline, the price and who decides. Security work includes signed authorization.</p></li>
+        <li class="rise"><h3><span>The work.</span></h3><p>Weekly written updates on builds, a halfway update on reviews. Anything critical reaches you the hour I find it.</p></li>
+        <li class="rise"><h3><span>Delivery.</span></h3><p>Builds ship running, with the repository, pipeline and documentation in your hands. Reviews ship as a report ranked by business impact, each finding with the fix written out.</p></li>
+        <li class="rise"><h3><span>Walkthrough.</span> An hour, live.</h3><p>A handover for builds, a findings walkthrough for reviews, while the context is still fresh in both our heads.</p></li>
+        <li class="rise"><h3><span>Aftercare.</span> Thirty days.</h3><p>Fixes on anything I built that does not behave as agreed. For reviews, a free retest of every finding you fix inside that window.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ what I don't do ============ -->
+  <section class="band band--ink dk" id="limits" aria-labelledby="limits-h">
+    <div class="wrap">
+      <p class="eyebrow rise">Before you email</p>
+      <h2 id="limits-h" class="rise">What I don&rsquo;t do</h2>
+      <p class="lede rise" style="margin:16px 0 clamp(32px,4vw,52px)">Some of this costs me work. I would rather lose the wrong project than take it and disappoint you halfway through.</p>
+
+      <div class="limits">
+        <div class="limit rise">
+          <b>I don&rsquo;t call a code review a penetration test.</b>
+          <p>They find different things. A review reads the code and the configuration. A pentest attacks a running system under agreed rules. If you need one signed off for a customer or an auditor, say so and I will point you at someone who does them properly.</p>
+        </div>
+        <div class="limit rise">
+          <b>I don&rsquo;t forward scanner output and call it a report.</b>
+          <p>Any tool can produce the raw list in an afternoon. Working out which findings are genuinely exploitable in your system, and which are noise, is the part you are actually paying for.</p>
+        </div>
+        <div class="limit rise">
+          <b>I&rsquo;ll need it in writing before I start testing.</b>
+          <p>Not because I am precious about paperwork. One page naming the systems, the window and someone to call if something goes sideways takes about ten minutes to agree, and it means neither of us is guessing later. Once it is signed I get going.</p>
+        </div>
+        <div class="limit rise">
+          <b>I don&rsquo;t issue certificates.</b>
+          <p>I will do the legwork to get you ready for ISO&nbsp;27001, a customer security questionnaire or an insurance renewal. The certificate itself comes from an accredited body. Anyone offering to issue it directly is not one.</p>
+        </div>
+        <div class="limit rise">
+          <b>I don&rsquo;t hand your project to anyone else.</b>
+          <p>The person on the scope call is the person writing the code. Nothing goes to an agency bench, a junior, or a team you never meet.</p>
+        </div>
+        <div class="limit rise">
+          <b>I don&rsquo;t quote a number I have not thought about.</b>
+          <p>If a scope is too vague to price, I say so and we spend the free call making it specific. A confident guess that doubles in month two helps neither of us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ work ============ -->
+  <section class="band band--paper" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h" class="h-gap rise">Things I have actually shipped</h2>
+      <div class="work">
+        <article class="proj proj--lead rise">
+          <p class="proj__year">2024 &ndash; 2026</p>
+          <h3>Multi-tenant e-commerce returns platform</h3>
+          <p>Founding engineer, from an empty repository to paying merchants. Built the API security, the multitenancy, the live schema migrations run against production, and the GDPR privacy work that came with holding other companies&rsquo; customer data.</p>
+        </article>
+        <article class="proj rise">
+          <p class="proj__year">2025</p>
+          <h3>Network vulnerability scanner</h3>
+          <p>Scans IP ranges, detects open services, extracts version information, and flags end-of-life software and known CVEs. I wrote it, so the exposure assessment I sell is not a rented tool with my name on the report.</p>
+        </article>
+        <article class="proj rise">
+          <p class="proj__year">2023</p>
+          <h3>End-to-end encrypted social platform</h3>
+          <p>Vera Connect. End-to-end encryption, privacy improvements, and database migrations run against a product that was already live and had users on it.</p>
+        </article>
+        <article class="proj rise">
+          <p class="proj__year">2025 &ndash; 2026</p>
+          <h3>Country-level internet outage detection</h3>
+          <p>MSc thesis. Analyses RIPE&nbsp;Atlas probe traffic to detect national outages and then validate that what the data shows actually happened.</p>
+        </article>
+        <article class="proj rise">
+          <p class="proj__year">Now</p>
+          <h3>Platform security at Uber</h3>
+          <p>Secrets rotation and handling, leak detection, identity and access management, secrets cryptography, and the site reliability side of keeping all of it running.</p>
+        </article>
+      </div>
+      <div class="creds">
+        <div class="cred rise"><b>MSc Computer Science, Cyber Security</b><span>TU&nbsp;Delft, 2025 &ndash; 2026</span></div>
+        <div class="cred rise"><b>BSc Computer Science &amp; Engineering, cum laude</b><span>TU&nbsp;Delft, 2021 &ndash; 2026</span></div>
+        <div class="cred rise"><b>Teaching assistant, OOP and cryptography</b><span>TU&nbsp;Delft, 2024 &ndash; 2026</span></div>
+        <div class="cred rise"><b>Exchange: Tsinghua University, Institut Teknologi Bandung</b><span>China and Indonesia, 2023 &ndash; 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ contact ============ -->
+  <section class="band band--ink dk contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact__grid">
+      <div class="rise">
+        <h2 id="contact-h">Tell me what you have and what is worrying you.</h2>
+        <a class="mailto" href="mailto:filipdbrv@gmail.com?subject=Project%20enquiry">filipdbrv@gmail.com</a>
+      </div>
+      <dl class="facts rise">
+        <div><dt>Day rate</dt><dd class="num">&euro;350 &ndash; 550</dd></div>
+        <div><dt>Reply</dt><dd>Within one working day</dd></div>
+        <div><dt>Based in</dt><dd>Delft, Netherlands</dd></div>
+        <div><dt>Works</dt><dd>Remote across Europe</dd></div>
+        <div><dt>Languages</dt><dd>Bulgarian, English</dd></div>
+        <div><dt>Elsewhere</dt><dd>
+          <a href="https://www.linkedin.com/in/filip-dobrev-a470b3244" rel="noopener">LinkedIn</a>,
+          <a href="https://github.com/FilipDobrev" rel="noopener">GitHub</a>
+        </dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <span>Filip Dobrev, Delft</span>
+  <a href="mailto:filipdbrv@gmail.com">filipdbrv@gmail.com</a>
+  <span>Prices shown are estimates, confirmed in a written brief before any work starts.</span>
+</footer>
+
+<!-- the scope, docked, visible from anywhere on the page -->
+<div class="dock dk" id="dock" role="region" aria-label="Your scope">
+  <div class="dock__panel" id="dockPanel">
+    <div>
+      <ul class="dock__list" id="dockList"></ul>
+      <p class="dock__note">Retainers and booked days are priced separately and are not part of this total.</p>
+    </div>
+  </div>
+  <div class="dock__bar">
+    <button class="dock__toggle" id="dockToggle" type="button" aria-expanded="false" aria-controls="dockPanel">
+      <span class="cnt" id="dockCount">0 services</span>
+      <span class="tot" id="dockTotal">&euro;0</span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="dock__acts">
+      <button class="dock__clear" id="dockClear" type="button">Clear</button>
+      <a class="btn btn--fill" id="dockSend" href="mailto:filipdbrv@gmail.com">Send This Scope</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Every price is days x day rate at 350 to 550, which is why the
+     columns stay in proportion. Changing the rate re-derives the
+     whole table rather than nudging single lines. */
+  var SERVICES = [
+    { id:"marketing-site", practice:"build",   name:"Marketing site",               days:[1,3],   price:[400,1500],
+      desc:"Nobody logs in. A few pages that load fast, read well on a phone, and come with working backups and sensible security headers." },
+    { id:"api-backend",    practice:"build",   name:"API backend",                  days:[5,12],  price:[1800,6500],
+      desc:"The service layer on its own. Data model, documented endpoints, authentication and authorization, and a migration path that will not lock you in." },
+    { id:"web-app",        practice:"build",   name:"Web application",              days:[12,25], price:[4200,13500],
+      desc:"The API above, plus the interface people actually use. Accounts, screens, an admin side. One application rather than a whole product." },
+    { id:"product-v1",     practice:"build",   name:"Product, first version",       days:[30,55], price:[10500,30000],
+      desc:"A web application plus the parts that make it a business: signup, billing, a marketing site, and the operations to keep it running." },
+    { id:"integration",    practice:"build",   name:"Integration or migration",     days:[3,12],  price:[1000,6500],
+      desc:"Moving off a dying system, or connecting two that were never meant to talk. With a rollback plan, not a hopeful weekend." },
+
+    { id:"workflow-audit", practice:"improve", name:"Engineering workflow audit",   days:[2,4],   price:[700,2200],
+      desc:"Days spent inside your process. Where the time actually goes, what breaks repeatedly, and a written plan ranked by hours saved per month." },
+    { id:"automate",       practice:"improve", name:"Automate a manual process",    days:[2,8],   price:[700,4400],
+      desc:"The spreadsheet somebody rebuilds every Monday, or the data somebody copies between two systems by hand." },
+    { id:"deploy",         practice:"improve", name:"Deploy pipeline",              days:[3,8],   price:[1000,4400],
+      desc:"Tests run automatically, deploys stop being an event, and rollback takes one command instead of an evening." },
+    { id:"monitoring",     practice:"improve", name:"Monitoring and alerting",      days:[3,7],   price:[1000,3800],
+      desc:"You find out about the outage before your customers tell you. Uptime, errors, certificates, and alerts worth waking up for." },
+    { id:"onboarding",     practice:"improve", name:"Onboarding and documentation", days:[3,6],   price:[1000,3300],
+      desc:"Written so a new developer is useful in days rather than months, and so one person leaving is not an emergency." },
+
+    { id:"incident",       practice:"review",  name:"Incident cleanup",             days:[1,2],   price:[400,1100],
+      desc:"Defaced, redirecting, flagged by Google, or suspended by your host. Entry point found, persistence removed, credentials rotated, delisting handled." },
+    { id:"exposure",       practice:"review",  name:"External exposure assessment", days:[2,3],   price:[700,1650],
+      desc:"What an attacker sees before touching anything. DNS, TLS, headers, exposed panels, leaked credentials, known CVEs in what you run." },
+    { id:"secrets",        practice:"review",  name:"Secrets and access review",    days:[3,7],   price:[1000,3800],
+      desc:"Where your keys live, who can reach them, how they rotate, and what already leaked into git history or a CI log." },
+    { id:"appsec",         practice:"review",  name:"Application security review",  days:[5,10],  price:[1750,5500],
+      desc:"One codebase, read properly. Authentication, access control, injection, sessions, uploads, secrets, and the dependency chain." },
+    { id:"uxreview",       practice:"review",  name:"Interface and usability review", days:[3,7], price:[1000,3800],
+      desc:"Where your users get stuck, give up, or do the wrong thing. Every problem written down with the screen it happens on, ranked by how much it costs you, and a concrete fix for each one." }
+  ];
+
+  var PRACTICE = { build:"Build", improve:"Improve", review:"Review" };
+  var BANDS = [
+    { practice:"build",   when:"It does not exist yet" },
+    { practice:"improve", when:"It works, but it costs the team time" },
+    { practice:"review",  when:"It is live and you are worried" }
+  ];
+
+  var nf = new Intl.NumberFormat("en-GB");
+  var euro = function (n) { return "€" + nf.format(n); };
+  var money = function (lo, hi) { return lo === hi ? euro(lo) : euro(lo) + " – " + nf.format(hi); };
+  var days = function (lo, hi) { return lo + "–" + hi + " days"; };
+  var esc = function (t) {
+    return t.replace(/[&<>"]/g, function (c) {
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c];
+    });
+  };
+
+  var cards = document.getElementById("cards");
+  var picked = new Set();
+
+  /* ---- catalogue, banded by practice ---- */
+  function buildCard(s) {
+    var el = document.createElement("article");
+    el.className = "card";
+    el.dataset.practice = s.practice;
+    el.innerHTML =
+      '<div class="card__body">' +
+        '<div class="card__row">' +
+          '<h4 class="card__name">' + esc(s.name) + '</h4>' +
+          '<span class="card__price">' + money(s.price[0], s.price[1]) + '</span>' +
+        '</div>' +
+        '<p class="card__days">' + days(s.days[0], s.days[1]) + '</p>' +
+        '<p>' + esc(s.desc) + '</p>' +
+      '</div>' +
+      '<label class="add" for="c-' + s.id + '">' +
+        '<input type="checkbox" id="c-' + s.id + '" value="' + s.id + '">' +
+        '<span>Add to scope</span>' +
+      '</label>';
+    return el;
+  }
+
+  BANDS.forEach(function (band) {
+    var mine = SERVICES.filter(function (s) { return s.practice === band.practice; });
+    var group = document.createElement("section");
+    group.className = "group";
+    group.dataset.practice = band.practice;
+    group.setAttribute("aria-labelledby", "g-" + band.practice);
+    group.innerHTML =
+      '<div class="group__head">' +
+        '<h3 id="g-' + band.practice + '">' + PRACTICE[band.practice] + '</h3>' +
+        '<p class="group__when">' + band.when + '</p>' +
+        '<span class="group__count">' + mine.length + ' services</span>' +
+      '</div>' +
+      '<div class="cards"></div>';
+    var slot = group.querySelector(".cards");
+    mine.forEach(function (s) { slot.appendChild(buildCard(s)); });
+    cards.appendChild(group);
+  });
+
+  /* ---- the segmented filter ---- */
+  var seg = document.getElementById("seg");
+  var thumb = document.getElementById("segThumb");
+  var status = document.getElementById("filterStatus");
+  var segBtns = Array.prototype.slice.call(seg.querySelectorAll("button"));
+
+  function moveThumb(btn) {
+    /* translate plus scaleX keeps the indicator on the compositor */
+    thumb.style.transform =
+      "translateX(" + (btn.offsetLeft - 4) + "px) scaleX(" + (btn.offsetWidth / 100) + ")";
+  }
+
+  function applyFilter(which, push) {
+    var active = segBtns[0];
+    segBtns.forEach(function (b) {
+      var on = b.dataset.filter === which;
+      b.setAttribute("aria-pressed", String(on));
+      if (on) active = b;
+    });
+
+    var shown = [];
+    Array.prototype.forEach.call(cards.children, function (g) {
+      g.hidden = which !== "all" && g.dataset.practice !== which;
+      g.classList.remove("first");
+      if (!g.hidden) shown.push(g);
+    });
+    if (shown.length) shown[0].classList.add("first");
+
+    var n = shown.reduce(function (t, g) { return t + g.querySelectorAll(".card").length; }, 0);
+    status.textContent = which === "all"
+      ? "Showing all " + n + " services"
+      : "Showing " + n + " of 14 services · " + PRACTICE[which] + " only";
+
+    /* replay the entry so a filter change is felt, not only read */
+    if (push) {
+      shown.forEach(function (g) {
+        g.classList.remove("swap");
+        void g.offsetWidth;
+        g.classList.add("swap");
+      });
+      var url = new URL(window.location.href);
+      url.searchParams.set("practice", which);
+      history.replaceState(null, "", url);
+    }
+
+    moveThumb(active);
+  }
+
+  segBtns.forEach(function (b) {
+    b.addEventListener("click", function () { applyFilter(b.dataset.filter, true); });
+  });
+
+  var wanted = new URL(window.location.href).searchParams.get("practice");
+  var valid = ["all", "build", "improve", "review"];
+  applyFilter(valid.indexOf(wanted) > -1 ? wanted : "all", false);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { moveThumb(seg.querySelector('[aria-pressed="true"]')); });
+  }
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(function () { moveThumb(seg.querySelector('[aria-pressed="true"]')); }).observe(seg);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function (a) {
+    a.addEventListener("click", function () { applyFilter(a.dataset.jump, true); });
+  });
+
+  /* ---- the docked scope ---- */
+  var dock       = document.getElementById("dock");
+  var dockPanel  = document.getElementById("dockPanel");
+  var dockToggle = document.getElementById("dockToggle");
+  var dockList   = document.getElementById("dockList");
+  var dockCount  = document.getElementById("dockCount");
+  var dockTotal  = document.getElementById("dockTotal");
+  var dockSend   = document.getElementById("dockSend");
+  var dockClear  = document.getElementById("dockClear");
+
+  function collapse() {
+    dockPanel.classList.remove("open");
+    dockToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function update() {
+    var list = SERVICES.filter(function (s) { return picked.has(s.id); });
+    var n = list.length;
+
+    dock.classList.toggle("up", n > 0);
+    if (!n) collapse();
+
+    var pLo = 0, pHi = 0, dLo = 0, dHi = 0;
+    list.forEach(function (s) {
+      pLo += s.price[0]; pHi += s.price[1];
+      dLo += s.days[0];  dHi += s.days[1];
+    });
+
+    dockCount.textContent = n
+      ? n + (n === 1 ? " service · " : " services · ") + dLo + "–" + dHi + " days"
+      : "0 services";
+    dockTotal.textContent = money(pLo, pHi);
+    dockToggle.setAttribute("aria-label",
+      n + (n === 1 ? " service" : " services") + " selected, " + money(pLo, pHi) +
+      ". Show the breakdown.");
+
+    dockList.innerHTML = list.map(function (s) {
+      return '<li data-practice="' + s.practice + '">' +
+             '<span class="nm">' + esc(s.name) + '</span>' +
+             '<span class="pr">' + money(s.price[0], s.price[1]) + '</span>' +
+             '<span class="mt"><span class="pt">' + PRACTICE[s.practice] + '</span>' +
+             days(s.days[0], s.days[1]) + '</span></li>';
+    }).join("");
+
+    var body =
+      "Hi Filip,\n\n" +
+      "I put a scope together on your site. Here is what I picked:\n\n" +
+      list.map(function (s) {
+        return "- " + s.name + " (" + PRACTICE[s.practice] + "), " +
+               days(s.days[0], s.days[1]) + ", " + money(s.price[0], s.price[1]);
+      }).join("\n") +
+      "\n\nEstimate: " + money(pLo, pHi) +
+      "\nRoughly " + dLo + " to " + dHi + " days of work.\n\n" +
+      "About the project:\n" +
+      "(what exists today, what needs to happen, and by when)\n\n" +
+      "Thanks,\n";
+
+    dockSend.href = "mailto:filipdbrv@gmail.com" +
+      "?subject=" + encodeURIComponent("Project enquiry, " + money(pLo, pHi)) +
+      "&body=" + encodeURIComponent(body);
+  }
+
+  cards.addEventListener("change", function (e) {
+    var box = e.target;
+    if (!box.matches('input[type="checkbox"]')) return;
+    if (box.checked) picked.add(box.value); else picked.delete(box.value);
+    update();
+  });
+
+  dockToggle.addEventListener("click", function () {
+    var open = dockPanel.classList.toggle("open");
+    dockToggle.setAttribute("aria-expanded", String(open));
+  });
+
+  dockClear.addEventListener("click", function () {
+    picked.clear();
+    Array.prototype.forEach.call(cards.querySelectorAll('input[type="checkbox"]'), function (b) {
+      b.checked = false;
+    });
+    update();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && dockPanel.classList.contains("open")) {
+      collapse();
+      dockToggle.focus();
+    }
+  });
+
+  update();
+
+  /* ---- reveal and the active section ---- */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var risers = Array.prototype.slice.call(document.querySelectorAll(".rise"));
+
+  if (!reduce.matches && "IntersectionObserver" in window) {
+    var reveal = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add("in");
+        reveal.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.06 });
+    risers.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 5, 4) * 50 + "ms";
+      reveal.observe(el);
+    });
+  } else {
+    risers.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  if ("IntersectionObserver" in window) {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".rail__nav a"));
+    var targets = links
+      .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+      .filter(Boolean);
+    if (targets.length) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (a) {
+            a.classList.toggle("here", a.getAttribute("href") === "#" + en.target.id);
+          });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      targets.forEach(function (t) { spy.observe(t); });
+    }
+  }
+})();
+</script>
+</body>
+</html>
