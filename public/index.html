@@ -13,14 +13,14 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://melotech.dev/">
 <meta property="og:title" content="Filip Dobrev, software engineer in Delft">
-<meta property="og:description" content="Software that holds up after it ships. Building, improving how teams ship, and reviewing the security of what is already running. Published prices, Delft, remote across Europe.">
+<meta property="og:description" content="One engineer who builds it, improves how you ship it, and reviews its security. Published prices, Delft, remote across Europe.">
 <meta property="og:image" content="https://melotech.dev/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Melotech. Software that holds up after it ships. Software engineer at Uber.">
+<meta property="og:image:alt" content="Filip Dobrev, software engineer at Uber. Build it, ship it faster, prove it is secure.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Filip Dobrev, software engineer in Delft">
-<meta name="twitter:description" content="Software that holds up after it ships. Published prices, Delft, remote across Europe.">
+<meta name="twitter:description" content="One engineer who builds it, improves how you ship it, and reviews its security. Published prices, Delft.">
 <meta name="twitter:image" content="https://melotech.dev/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314161C'/%3E%3Cpath d='M11 22V10h10M11 16h7' stroke='%236E8CFF' stroke-width='2.2' fill='none' stroke-linecap='square'/%3E%3Ccircle cx='23' cy='22' r='2.4' fill='%23FF5FA8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -352,11 +352,6 @@ p{margin:0;text-wrap:pretty}
 @media (max-width:820px){.method{grid-template-columns:1fr}}
 
 /* ---------------- what I don't do ---------------- */
-.limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:clamp(24px,3vw,40px) clamp(30px,4.5vw,68px)}
-.limit{display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
-.limit i{grid-row:1/3;font-size:1.15rem;line-height:1.35;color:var(--review-lt)}
-.limit b{display:block;font-family:var(--display);font-weight:600;font-size:1.04rem;letter-spacing:-.024em;margin-bottom:7px;color:var(--on-ink)}
-.limit p{font-size:.92rem;line-height:1.56;color:var(--on-ink-dim);max-width:44ch}
 
 /* ---------------- work ---------------- */
 .work{display:grid;grid-template-columns:repeat(12,1fr);gap:13px}
@@ -555,7 +550,6 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
     <a href="#practices">Practices</a>
     <a href="#services">Services &amp; Prices</a>
     <a href="#method">How It Works</a>
-    <a href="#limits">What I Don&rsquo;t Do</a>
     <a href="#work">Work</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -566,7 +560,7 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
   <!-- ============ hero ============ -->
   <section class="band band--ink dk hero" id="top">
     <div class="wrap hero__grid">
-      <h1 class="rise">Software that holds up after it ships.</h1>
+      <h1 class="rise">Build it, ship it faster, prove it is secure.</h1>
       <div class="hero__aside rise">
         <p class="lede">One engineer who builds it, improves how you ship it, and reviews its security. Prices are published below.</p>
         <div class="hero__cta">
@@ -733,50 +727,8 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
     </div>
   </section>
 
-  <!-- ============ what I don't do ============ -->
-  <section class="band band--ink dk" id="limits" aria-labelledby="limits-h">
-    <div class="wrap">
-      <p class="eyebrow rise">Before you email</p>
-      <h2 id="limits-h" class="rise">What I don&rsquo;t do</h2>
-      <p class="lede rise" style="margin:16px 0 clamp(32px,4vw,52px)">Some of this costs me work. I would rather lose the wrong project than take it and disappoint you halfway through.</p>
-
-      <div class="limits">
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I don&rsquo;t call a code review a penetration test.</b>
-          <p>They find different things. A review reads the code and the configuration. A pentest attacks a running system under agreed rules. If you need one signed off for a customer or an auditor, say so and I will point you at someone who does them properly.</p>
-        </div>
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I don&rsquo;t forward scanner output and call it a report.</b>
-          <p>Any tool can produce the raw list in an afternoon. Working out which findings are genuinely exploitable in your system, and which are noise, is the part you are actually paying for.</p>
-        </div>
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I&rsquo;ll need it in writing before I start testing.</b>
-          <p>Not because I am precious about paperwork. One page naming the systems, the window and someone to call if something goes sideways takes about ten minutes to agree, and it means neither of us is guessing later. Once it is signed I get going.</p>
-        </div>
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I don&rsquo;t issue certificates.</b>
-          <p>I will do the legwork to get you ready for ISO&nbsp;27001, a customer security questionnaire or an insurance renewal. The certificate itself comes from an accredited body. Anyone offering to issue it directly is not one.</p>
-        </div>
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I don&rsquo;t hand your project to anyone else.</b>
-          <p>The person on the scope call is the person writing the code. Nothing goes to an agency bench, a junior, or a team you never meet.</p>
-        </div>
-        <div class="limit rise">
-          <i class="ph ph-x" aria-hidden="true"></i>
-          <b>I don&rsquo;t quote a number I have not thought about.</b>
-          <p>If a scope is too vague to price, I say so and we spend the free call making it specific. A confident guess that doubles in month two helps neither of us.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ work ============ -->
-  <section class="band band--paper" id="work" aria-labelledby="work-h">
+  <section class="band band--paper2" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <h2 id="work-h" class="h-gap rise">Things I have actually shipped</h2>
       <div class="work">
