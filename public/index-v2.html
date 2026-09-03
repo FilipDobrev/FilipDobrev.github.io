@@ -192,22 +192,112 @@ p{margin:0;text-wrap:pretty}
 .dk .btn--line{color:var(--on-ink);border-color:var(--edge-ink)}
 .dk .btn--line:hover{border-color:var(--on-ink);background:rgba(237,237,235,.08)}
 
-/* ---------------- hero ---------------- */
+/* ---------------- hero ----------------
+   Copy holds the left. The deck holds the right and runs off the edge
+   of the window, so the first screen reads as a slice of something
+   larger rather than a centred poster. Depth is geometry and hairlines
+   only, no ambience, because no other band on this page has any.
+   -------------------------------------- */
 .hero{
-  padding-top:clamp(52px,8vw,96px);
-  padding-bottom:clamp(52px,8vw,96px);
+  position:relative;overflow:hidden;
+  padding-top:clamp(52px,8vw,92px);
+  padding-bottom:clamp(52px,8vw,92px);
   min-height:calc(100dvh - var(--nav-h));
   display:flex;align-items:center;
 }
-.hero__grid{
-  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);
-  gap:clamp(30px,5vw,76px);align-items:end;width:100%;
+.hero__grid{position:relative;z-index:2;width:100%}
+.hero__copy{max-width:min(680px,60%)}
+.hero .lede{margin-top:clamp(16px,2.2vw,24px);color:var(--on-ink-dim)}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(22px,3vw,32px)}
+
+/* the deck: five planes of one system, surface at the front, secrets
+   at the back. Each plane is a real layer I work on, not decoration. */
+.deck{
+  position:absolute;z-index:1;pointer-events:none;
+  /* anchored just right of the copy column so the gap between them
+     stays the same on a laptop and on a 1920 monitor */
+  top:50%;left:calc(50% + 46px);right:auto;
+  width:min(880px,54vw);aspect-ratio:1/1;
+  transform:translateY(-50%);
 }
-.hero__aside{padding-bottom:4px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-@media (max-width:900px){
-  .hero{min-height:0}
-  .hero__grid{grid-template-columns:1fr;align-items:start;gap:28px}
+/* The depth here is built from 2D transforms on purpose. A rotateX/rotateY
+   deck gets rasterised into its own compositing layer and then mapped onto
+   the screen, so every near-horizontal edge, hairline and accent rail comes
+   back stair-stepped. Translate, scale and one shared rotation are painted
+   at device resolution instead, so the edges stay smooth. */
+.deck__inner{
+  position:absolute;inset:0;
+  transform:
+    rotate(calc(-2deg + var(--dx,0) * 0.9deg))
+    translate(calc(var(--dx,0) * 10px),calc(var(--dy,0) * 8px));
+  transition:transform 1.2s var(--ease);
+}
+.plane{
+  --acc:var(--build-lt);
+  position:absolute;left:9%;top:15%;width:min(410px,50%);
+  display:grid;grid-template-columns:auto 1fr;align-items:center;
+  column-gap:15px;padding:16px 20px 16px 23px;
+  border:1px solid var(--line-ink-2);border-radius:var(--r-lg);
+  background:linear-gradient(150deg,rgba(237,237,235,.085),rgba(237,237,235,.022));
+  box-shadow:0 26px 54px rgba(0,0,0,.5);
+  transform-origin:0 50%;
+  transform:
+    translate(calc(var(--i) * 38px),calc(var(--i) * 104px))
+    scale(calc(1 - var(--i) * .028));
+  opacity:calc(1 - var(--i) * .07);
+  animation:deckIn .9s var(--ease) backwards;
+  animation-delay:calc(140ms + var(--i) * 95ms);
+}
+/* the hairline that says these are one system, not five cards */
+.plane::after{
+  content:"";position:absolute;left:22px;top:100%;height:36px;width:1.5px;
+  background:var(--line-ink-2);
+}
+.plane:last-child::after{display:none}
+.plane::before{
+  content:"";position:absolute;left:-1px;top:16px;bottom:16px;width:3px;
+  border-radius:3px;background:var(--acc);
+}
+.plane i{font-size:1.45rem;line-height:1;color:var(--acc)}
+.plane b{
+  display:block;font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.2em;color:var(--on-ink);white-space:nowrap;
+}
+.plane em{
+  display:block;font-style:normal;font-size:.82rem;line-height:1.35;
+  color:var(--on-ink-dim);margin-top:3px;
+}
+.plane[data-accent="improve"]{--acc:var(--improve-lt)}
+.plane[data-accent="review"]{--acc:var(--review-lt)}
+
+@keyframes deckIn{
+  from{
+    opacity:0;
+    transform:
+      translate(calc(var(--i) * 38px + 40px),calc(var(--i) * 104px + 22px))
+      scale(calc(1 - var(--i) * .028));
+  }
+}
+
+
+/* Under 1080px the deck stops being a bleed and becomes a flat stack
+   under the copy, which keeps the labels readable on a phone. */
+@media (max-width:1080px){
+  .hero{min-height:0;display:flex;flex-direction:column}
+  .hero__grid{order:1}
+  .deck{order:2}
+  .hero__copy{max-width:none}
+  .deck{
+    position:relative;top:auto;left:auto;right:auto;transform:none;
+    width:100%;max-width:460px;aspect-ratio:auto;height:auto;
+    margin-top:clamp(40px,7vw,64px);
+  }
+  .deck__inner{position:relative;inset:auto;transform:none;display:grid;gap:10px}
+  .plane{position:relative;left:auto;top:auto;width:auto;transform:none;opacity:1;box-shadow:none}
+  .plane::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .deck__inner{transition:none}
 }
 
 /* ---------------- worked at ---------------- */
@@ -559,11 +649,37 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
 
   <!-- ============ hero ============ -->
   <section class="band band--ink dk hero" id="top">
+
+    <div class="deck" aria-hidden="true">
+      <div class="deck__inner">
+        <div class="plane" style="--i:0" data-accent="build">
+          <i class="ph ph-browser"></i>
+          <span><b>INTERFACE</b><em>The part your users touch</em></span>
+        </div>
+        <div class="plane" style="--i:1" data-accent="build">
+          <i class="ph ph-brackets-curly"></i>
+          <span><b>API</b><em>Contracts, limits, versions</em></span>
+        </div>
+        <div class="plane" style="--i:2" data-accent="build">
+          <i class="ph ph-database"></i>
+          <span><b>DATA</b><em>Schema, migrations, backups</em></span>
+        </div>
+        <div class="plane" style="--i:3" data-accent="improve">
+          <i class="ph ph-git-branch"></i>
+          <span><b>PIPELINE</b><em>Build, test, deploy, roll back</em></span>
+        </div>
+        <div class="plane" style="--i:4" data-accent="review">
+          <i class="ph ph-key"></i>
+          <span><b>SECURITY</b><em>Rotation, access, detection</em></span>
+        </div>
+      </div>
+    </div>
+
     <div class="wrap hero__grid">
-      <h1 class="rise">Build it, ship it faster, prove it is secure.</h1>
-      <div class="hero__aside rise">
-        <p class="lede">One engineer who builds it, improves how you ship it, and reviews its security. Prices are published below.</p>
-        <div class="hero__cta">
+      <div class="hero__copy">
+        <h1 class="rise">Build it, ship it faster, prove it is secure.</h1>
+        <p class="lede rise">One engineer who builds it, improves how you ship it, and reviews its security.</p>
+        <div class="hero__cta rise">
           <a class="btn btn--fill" href="#services">See Services &amp; Prices</a>
           <a class="btn btn--line" href="mailto:filipdbrv@gmail.com?subject=Project%20enquiry">Email Me</a>
         </div>
@@ -1193,6 +1309,37 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
   });
 
   update();
+
+  /* ---- the deck follows the pointer, a little ----
+     Pointer only, so a touch device never pays for it, and the whole
+     thing is skipped when the visitor asked for less motion. */
+  var hero = document.getElementById("top");
+  var deck = hero && hero.querySelector(".deck__inner");
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var wideEnough = window.matchMedia("(min-width: 1081px)");
+
+  if (deck && finePointer.matches && wideEnough.matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var queued = false, nx = 0, ny = 0;
+
+    hero.addEventListener("pointermove", function (ev) {
+      var box = hero.getBoundingClientRect();
+      nx = (ev.clientX - box.left) / box.width * 2 - 1;
+      ny = (ev.clientY - box.top) / box.height * 2 - 1;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        deck.style.setProperty("--dx", nx.toFixed(3));
+        deck.style.setProperty("--dy", ny.toFixed(3));
+      });
+    });
+
+    hero.addEventListener("pointerleave", function () {
+      deck.style.setProperty("--dx", 0);
+      deck.style.setProperty("--dy", 0);
+    });
+  }
 
   /* ---- reveal and the active section ---- */
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
