@@ -1,0 +1,62 @@
+# Melotech
+
+> Filip Dobrev, a software engineer in Delft, Netherlands, working remotely
+> across Europe. One person, three practices: building software, improving
+> how a team ships it, and reviewing the security of what is already running.
+
+Every price on the site is public. Work is quoted as days multiplied by a
+day rate of 350 to 550 euro. There are fourteen fixed services plus a
+retainer. A visitor can tick the services they need and read the total
+without contacting anyone first.
+
+## Practices
+
+- Build. It does not exist yet. From a marketing site to the first version
+  of a product, delivered with the repository, the pipeline and the
+  documentation.
+- Improve. It works, but it costs the team time. Deploys, manual processes,
+  monitoring, onboarding. Ranked by hours saved per month.
+- Review. It is live and there is reason to worry. External exposure,
+  secrets and access, application security, interface and usability.
+  Findings ranked by business impact, each with the fix written out.
+
+## Services and prices
+
+Build
+- Marketing site, 1 to 3 days, 400 to 1500 euro
+- API backend, 5 to 12 days, 1800 to 6500 euro
+- Web application, 12 to 25 days, 4200 to 13500 euro
+- Product, first version, 30 to 55 days, 10500 to 30000 euro
+- Integration or migration, 3 to 12 days, 1000 to 6500 euro
+
+Improve
+- Engineering workflow audit, 2 to 4 days, 700 to 2200 euro
+- Automate a manual process, 2 to 8 days, 700 to 4400 euro
+- Deploy pipeline, 3 to 8 days, 1000 to 4400 euro
+- Monitoring and alerting, 3 to 7 days, 1000 to 3800 euro
+- Onboarding and documentation, 3 to 6 days, 1000 to 3300 euro
+
+Review
+- Incident cleanup, 1 to 2 days, 400 to 1100 euro
+- External exposure assessment, 2 to 3 days, 700 to 1650 euro
+- Secrets and access review, 3 to 7 days, 1000 to 3800 euro
+- Application security review, 5 to 10 days, 1750 to 5500 euro
+- Interface and usability review, 3 to 7 days, 1000 to 3800 euro
+
+Retainer: booked days inside the team, priced separately, for work that is
+continuous and where a fixed scope would get in the way.
+
+## Background
+
+Platform security at Uber. Previously TU Delft, It Goes Forward, and Vera
+Connect. Security work includes signed authorization before anything is
+tested.
+
+## Pages
+
+- https://melotech.dev/ : the whole site. Practices, the priced catalogue,
+  how an engagement runs, past work, and contact.
+
+## Contact
+
+- filipdbrv@gmail.com

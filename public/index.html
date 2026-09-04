@@ -17,18 +17,27 @@
 <meta property="og:image" content="https://melotech.dev/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Filip Dobrev, software engineer at Uber. Build it, ship it faster, prove it is secure.">
+<meta property="og:image:alt" content="Filip Dobrev, software engineer at Uber. Build it, secure it, ship it.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Filip Dobrev, software engineer in Delft">
 <meta name="twitter:description" content="One engineer who builds it, improves how you ship it, and reviews its security. Published prices, Delft.">
 <meta name="twitter:image" content="https://melotech.dev/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314161C'/%3E%3Cpath d='M11 22V10h10M11 16h7' stroke='%236E8CFF' stroke-width='2.2' fill='none' stroke-linecap='square'/%3E%3Ccircle cx='23' cy='22' r='2.4' fill='%23FF5FA8'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700;800&family=Manrope:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="preload" href="fonts/gabarito-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* self-hosted webfonts, latin subset only (covers the euro sign, U+20AC).
+   gabarito and manrope ship as a single variable file across their
+   weight range; plex mono ships one static file per weight. */
+@font-face{font-family:'Gabarito';font-style:normal;font-weight:500;font-display:swap;src:url("fonts/gabarito-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Gabarito';font-style:normal;font-weight:600;font-display:swap;src:url("fonts/gabarito-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Gabarito';font-style:normal;font-weight:700;font-display:swap;src:url("fonts/gabarito-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Gabarito';font-style:normal;font-weight:800;font-display:swap;src:url("fonts/gabarito-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url("fonts/manrope-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:swap;src:url("fonts/manrope-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url("fonts/manrope-var.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url("fonts/plexmono-400.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url("fonts/plexmono-500.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* ============================================================
    v11. The poster structure of v9, the controls of v10.
 
@@ -192,22 +201,64 @@ p{margin:0;text-wrap:pretty}
 .dk .btn--line{color:var(--on-ink);border-color:var(--edge-ink)}
 .dk .btn--line:hover{border-color:var(--on-ink);background:rgba(237,237,235,.08)}
 
-/* ---------------- hero ---------------- */
+/* ---------------- hero ----------------
+   The hero is a place rather than a layout. One ground plane runs
+   to a horizon just above the middle of the window, with a single
+   light at the far end, so the type has something to stand on and
+   the light has somewhere to come from.
+
+   All of it is drawn on a canvas, never with 3D transforms: a
+   rotateX subtree rasterises at its untransformed size and
+   stair-steps every near-horizontal edge.
+   ------------------------------------------------------------ */
 .hero{
-  padding-top:clamp(52px,8vw,96px);
-  padding-bottom:clamp(52px,8vw,96px);
+  position:relative;overflow:hidden;isolation:isolate;
+  padding-top:clamp(64px,11vh,120px);
+  padding-bottom:clamp(86px,13vh,158px);
   min-height:calc(100dvh - var(--nav-h));
-  display:flex;align-items:center;
+  display:flex;align-items:flex-end;
 }
-.hero__grid{
-  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);
-  gap:clamp(30px,5vw,76px);align-items:end;width:100%;
+.hero__field{
+  position:absolute;inset:0;z-index:0;
+  display:block;width:100%;height:100%;
+  pointer-events:none;
 }
-.hero__aside{padding-bottom:4px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-@media (max-width:900px){
-  .hero{min-height:0}
-  .hero__grid{grid-template-columns:1fr;align-items:start;gap:28px}
+/* Sky fall-off above and reading protection below. Everything
+   chromatic is on the canvas, where it means a practice. */
+.hero__veil{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(20,22,28,.68) 0%,
+    rgba(20,22,28,.12) 14%,
+    rgba(20,22,28,0) 23%,
+    rgba(20,22,28,0) 42%,
+    rgba(20,22,28,.42) 70%,
+    rgba(20,22,28,.86) 100%);
+}
+.hero__grid{position:relative;z-index:2;width:100%;text-align:center}
+.hero__eyebrow{margin-bottom:20px}
+.hero h1{
+  font-size:clamp(2.55rem,6.6vw,5.9rem);
+  max-width:21ch;
+  margin-inline:auto;
+}
+/* one clause per span, so a line never breaks inside one */
+.hero h1 span{white-space:nowrap}
+/* Left aligned rather than justified, so the lede and the buttons
+   stay one object at 1920 instead of drifting to opposite edges. */
+.hero__foot{margin-top:clamp(24px,3.6vh,42px)}
+.hero__lede{max-width:36ch;margin-inline:auto}
+.hero__cta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:clamp(20px,2.6vh,30px)}
+
+@media (max-width:1079px){
+  /* Single column, reduced density, and no pointer parallax. */
+  .hero{
+    min-height:calc(100dvh - var(--nav-h));
+    padding-top:clamp(96px,17vh,160px);
+    padding-bottom:clamp(56px,8vh,92px);
+  }
+  .hero h1{max-width:20ch}
+  .hero__lede{max-width:34ch}
 }
 
 /* ---------------- worked at ---------------- */
@@ -305,7 +356,7 @@ p{margin:0;text-wrap:pretty}
 .card__body{padding:19px 19px 17px}
 .card__row{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
 .card__name{display:flex;align-items:baseline;gap:9px;font-family:var(--display);font-weight:600;font-size:1.06rem;letter-spacing:-.026em;line-height:1.22}
-.card__name i{font-size:1.15rem;line-height:1;color:var(--p);flex:none;transform:translateY(1px)}
+.card__name .ic{font-size:1.15rem;color:var(--p);flex:none;transform:translateY(1px);vertical-align:-0.125em}
 .card__price{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.04em;font-size:.92rem;font-weight:500;white-space:nowrap}
 .card__days{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);font-variant-numeric:tabular-nums;margin-top:6px}
 .card p:not(.card__days){margin-top:11px;font-size:.9rem;line-height:1.56;color:var(--text-dim)}
@@ -344,7 +395,7 @@ p{margin:0;text-wrap:pretty}
 .method li:hover{border-color:var(--line-2)}
 .mbody{padding:clamp(18px,2vw,26px)}
 .mmeta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.mmeta i{font-size:1.45rem;line-height:1;color:var(--build)}
+.mmeta .ic{font-size:1.45rem;color:var(--build);flex:none}
 .mmeta span{font:500 .72rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--text-dim)}
 .method h3{margin-bottom:7px;color:var(--text-dim)}
 .method h3 span{color:var(--text)}
@@ -497,6 +548,270 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
         { "@type": "Country", "name": "Netherlands" },
         { "@type": "Place", "name": "Europe" }
       ],
+      "priceRange": "€400 to €30000 per engagement, €350 to €550 per day",
+      "currenciesAccepted": "EUR",
+      "image": "https://melotech.dev/og.png",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services and prices",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Marketing site",
+              "category": "Build",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 400,
+              "maxPrice": 1500
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "API backend",
+              "category": "Build",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1800,
+              "maxPrice": 6500
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web application",
+              "category": "Build",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 4200,
+              "maxPrice": 13500
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Product, first version",
+              "category": "Build",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 10500,
+              "maxPrice": 30000
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Integration or migration",
+              "category": "Build",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 6500
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Engineering workflow audit",
+              "category": "Improve",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 700,
+              "maxPrice": 2200
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automate a manual process",
+              "category": "Improve",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 700,
+              "maxPrice": 4400
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Deploy pipeline",
+              "category": "Improve",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 4400
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Monitoring and alerting",
+              "category": "Improve",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 3800
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Onboarding and documentation",
+              "category": "Improve",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 3300
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Incident cleanup",
+              "category": "Review",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 400,
+              "maxPrice": 1100
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "External exposure assessment",
+              "category": "Review",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 700,
+              "maxPrice": 1650
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Secrets and access review",
+              "category": "Review",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 3800
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Application security review",
+              "category": "Review",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1750,
+              "maxPrice": 5500
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Interface and usability review",
+              "category": "Review",
+              "provider": {
+                "@id": "https://melotech.dev/#business"
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "EUR",
+              "minPrice": 1000,
+              "maxPrice": 3800
+            }
+          }
+        ]
+      },
       "knowsAbout": [
         "Software engineering",
         "TypeScript",
@@ -529,6 +844,17 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       ]
     },
     {
+      "@type": "WebPage",
+      "@id": "https://melotech.dev/#webpage",
+      "url": "https://melotech.dev/",
+      "name": "Filip Dobrev, software engineer in Delft",
+      "description": "Software engineering, delivery improvement, and security review, with every price published.",
+      "isPartOf": { "@id": "https://melotech.dev/#website" },
+      "about": { "@id": "https://melotech.dev/#business" },
+      "primaryImageOfPage": "https://melotech.dev/og.png",
+      "inLanguage": "en"
+    },
+    {
       "@type": "WebSite",
       "@id": "https://melotech.dev/#website",
       "url": "https://melotech.dev/",
@@ -559,10 +885,13 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
 
   <!-- ============ hero ============ -->
   <section class="band band--ink dk hero" id="top">
+    <canvas class="hero__field" id="heroField" aria-hidden="true"></canvas>
+    <div class="hero__veil" aria-hidden="true"></div>
     <div class="wrap hero__grid">
-      <h1 class="rise">Build it, ship it faster, prove it is secure.</h1>
-      <div class="hero__aside rise">
-        <p class="lede">One engineer who builds it, improves how you ship it, and reviews its security. Prices are published below.</p>
+      <p class="eyebrow hero__eyebrow">Platform security at Uber</p>
+      <h1><span>Build it,</span> <span>secure it,</span> <span>ship it.</span></h1>
+      <div class="hero__foot">
+        <p class="lede hero__lede">One engineer, three practices, every price on this page.</p>
         <div class="hero__cta">
           <a class="btn btn--fill" href="#services">See Services &amp; Prices</a>
           <a class="btn btn--line" href="mailto:filipdbrv@gmail.com?subject=Project%20enquiry">Email Me</a>
@@ -683,42 +1012,42 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       <ol class="method">
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-phone-call" aria-hidden="true"></i><span>Step 01</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M144.27,45.93a8,8,0,0,1,9.8-5.66,86.22,86.22,0,0,1,61.66,61.66,8,8,0,0,1-5.66,9.8A8.23,8.23,0,0,1,208,112a8,8,0,0,1-7.73-5.94,70.35,70.35,0,0,0-50.33-50.33A8,8,0,0,1,144.27,45.93Zm-2.33,41.8c13.79,3.68,22.65,12.54,26.33,26.33A8,8,0,0,0,176,120a8.23,8.23,0,0,0,2.07-.27,8,8,0,0,0,5.66-9.8c-5.12-19.16-18.5-32.54-37.66-37.66a8,8,0,1,0-4.13,15.46Zm81.94,95.35A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z"/></svg><span>Step 01</span></div>
             <h3><span>Scope call.</span> Thirty minutes, free.</h3>
             <p>What you have, what you need, and what a good outcome looks like. If I am the wrong person, I say so on this call.</p>
           </div>
         </li>
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-file-text" aria-hidden="true"></i><span>Step 02</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg><span>Step 02</span></div>
             <h3><span>Written brief.</span></h3>
             <p>What is being built, improved or tested, what is explicitly out of scope, the timeline, the price and who decides. Security work includes signed authorization.</p>
           </div>
         </li>
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-code" aria-hidden="true"></i><span>Step 03</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></svg><span>Step 03</span></div>
             <h3><span>The work.</span></h3>
             <p>Weekly written updates on builds, a halfway update on reviews. Anything critical reaches you the hour I find it.</p>
           </div>
         </li>
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-package" aria-hidden="true"></i><span>Step 04</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"/></svg><span>Step 04</span></div>
             <h3><span>Delivery.</span></h3>
             <p>Builds ship running, with the repository, pipeline and documentation in your hands. Reviews ship as a report ranked by business impact, each finding with the fix written out.</p>
           </div>
         </li>
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-presentation-chart" aria-hidden="true"></i><span>Step 05</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"/></svg><span>Step 05</span></div>
             <h3><span>Walkthrough.</span> An hour, live.</h3>
             <p>A handover for builds, a findings walkthrough for reviews, while the context is still fresh in both our heads.</p>
           </div>
         </li>
         <li class="rise">
           <div class="mbody">
-            <div class="mmeta"><i class="ph ph-lifebuoy" aria-hidden="true"></i><span>Step 06</span></div>
+            <div class="mmeta"><svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.1,131.79a47.84,47.84,0,0,0,0-55.58l28.5-28.49a87.83,87.83,0,0,1,0,112.56ZM96,128a32,32,0,1,1,32,32A32,32,0,0,1,96,128Zm88.28-67.6L155.79,88.9a47.84,47.84,0,0,0-55.58,0L71.72,60.4a87.83,87.83,0,0,1,112.56,0ZM60.4,71.72l28.5,28.49a47.84,47.84,0,0,0,0,55.58L60.4,184.28a87.83,87.83,0,0,1,0-112.56ZM71.72,195.6l28.49-28.5a47.84,47.84,0,0,0,55.58,0l28.49,28.5a87.83,87.83,0,0,1-112.56,0Z"/></svg><span>Step 06</span></div>
             <h3><span>Aftercare.</span> Thirty days.</h3>
             <p>Fixes on anything I built that does not behave as agreed. For reviews, a free retest of every finding you fix inside that window.</p>
           </div>
@@ -939,6 +1268,33 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
 (function () {
   "use strict";
 
+  var ICON = {
+    "browser": '<path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V88H40V56Zm0,144H40V104H216v96Z"/>',
+    "plugs": '<path d="M149.66,138.34a8,8,0,0,0-11.32,0L120,156.69,99.31,136l18.35-18.34a8,8,0,0,0-11.32-11.32L88,124.69,69.66,106.34a8,8,0,0,0-11.32,11.32L64.69,124,41.37,147.31a32,32,0,0,0,0,45.26l5.38,5.37-28.41,28.4a8,8,0,0,0,11.32,11.32l28.4-28.41,5.37,5.38a32,32,0,0,0,45.26,0L132,191.31l6.34,6.35a8,8,0,0,0,11.32-11.32L131.31,168l18.35-18.34A8,8,0,0,0,149.66,138.34Zm-52.29,65a16,16,0,0,1-22.62,0L52.69,181.25a16,16,0,0,1,0-22.62L76,135.31,120.69,180Zm140.29-185a8,8,0,0,0-11.32,0l-28.4,28.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L124,64.69l-6.34-6.35a8,8,0,0,0-11.32,11.32l80,80a8,8,0,0,0,11.32-11.32L191.31,132l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,28.41-28.4A8,8,0,0,0,237.66,18.34Zm-34.35,79L180,120.69,135.31,76l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22A16,16,0,0,1,203.31,97.37Z"/>',
+    "squares-four": '<path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/>',
+    "rocket-launch": '<path d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z"/>',
+    "arrows-merge": '<path d="M192,40v64a8,8,0,0,1-2.34,5.66L136,163.31v49.38l18.34-18.35a8,8,0,0,1,11.32,11.32l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L120,212.69V163.31L66.34,109.66A8,8,0,0,1,64,104V40a8,8,0,0,1,16,0v60.69l48,48,48-48V40a8,8,0,0,1,16,0Z"/>',
+    "magnifying-glass": '<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/>',
+    "lightning": '<path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/>',
+    "flow-arrow": '<path d="M245.66,74.34l-32-32a8,8,0,0,0-11.32,11.32L220.69,72H208c-49.33,0-61.05,28.12-71.38,52.92-9.38,22.51-16.92,40.59-49.48,42.84a40,40,0,1,0,.1,16c43.26-2.65,54.34-29.15,64.14-52.69C161.41,107,169.33,88,208,88h12.69l-18.35,18.34a8,8,0,0,0,11.32,11.32l32-32A8,8,0,0,0,245.66,74.34ZM48,200a24,24,0,1,1,24-24A24,24,0,0,1,48,200Z"/>',
+    "pulse": '<path d="M240,128a8,8,0,0,1-8,8H204.94l-37.78,75.58A8,8,0,0,1,160,216h-.4a8,8,0,0,1-7.08-5.14L95.35,60.76,63.28,131.31A8,8,0,0,1,56,136H24a8,8,0,0,1,0-16H50.85L88.72,36.69a8,8,0,0,1,14.76.46l57.51,151,31.85-63.71A8,8,0,0,1,200,120h32A8,8,0,0,1,240,128Z"/>',
+    "book-open-text": '<path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64ZM160,88h40a8,8,0,0,1,0,16H160a8,8,0,0,1,0-16Zm48,40a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,128Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h40A8,8,0,0,1,208,160Z"/>',
+    "first-aid-kit": '<path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,200H40V72H216V200Zm-56-64a8,8,0,0,1-8,8H136v16a8,8,0,0,1-16,0V144H104a8,8,0,0,1,0-16h16V112a8,8,0,0,1,16,0v16h16A8,8,0,0,1,160,136Z"/>',
+    "binoculars": '<path d="M237.2,151.87v0a47.1,47.1,0,0,0-2.35-5.45L193.26,51.8a7.82,7.82,0,0,0-1.66-2.44,32,32,0,0,0-45.26,0A8,8,0,0,0,144,55V80H112V55a8,8,0,0,0-2.34-5.66,32,32,0,0,0-45.26,0,7.82,7.82,0,0,0-1.66,2.44L21.15,146.4a47.1,47.1,0,0,0-2.35,5.45v0A48,48,0,1,0,112,168V96h32v72a48,48,0,1,0,93.2-16.13ZM76.71,59.75a16,16,0,0,1,19.29-1v73.51a47.9,47.9,0,0,0-46.79-9.92ZM64,200a32,32,0,1,1,32-32A32,32,0,0,1,64,200ZM160,58.74a16,16,0,0,1,19.29,1l27.5,62.58A47.9,47.9,0,0,0,160,132.25ZM192,200a32,32,0,1,1,32-32A32,32,0,0,1,192,200Z"/>',
+    "key": '<path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM224,98.1c-1.09,34.09-29.75,61.86-63.89,61.9H160a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A63.72,63.72,0,0,1,96,95.92c0-34.14,27.81-62.8,61.9-63.89A64,64,0,0,1,224,98.1ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/>',
+    "shield-check": '<path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/>',
+    "cursor-click": '<path d="M88,24V16a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0ZM16,104h8a8,8,0,0,0,0-16H16a8,8,0,0,0,0,16ZM124.42,39.16a8,8,0,0,0,10.74-3.58l8-16a8,8,0,0,0-14.31-7.16l-8,16A8,8,0,0,0,124.42,39.16Zm-96,81.69-16,8a8,8,0,0,0,7.16,14.31l16-8a8,8,0,1,0-7.16-14.31ZM219.31,184a16,16,0,0,1,0,22.63l-12.68,12.68a16,16,0,0,1-22.63,0L132.7,168,115,214.09c0,.1-.08.21-.13.32a15.83,15.83,0,0,1-14.6,9.59l-.79,0a15.83,15.83,0,0,1-14.41-11L32.8,52.92A16,16,0,0,1,52.92,32.8L213,85.07a16,16,0,0,1,1.41,29.8l-.32.13L168,132.69ZM208,195.31,156.69,144h0a16,16,0,0,1,4.93-26l.32-.14,45.95-17.64L48,48l52.2,159.86,17.65-46c0-.11.08-.22.13-.33a16,16,0,0,1,11.69-9.34,16.72,16.72,0,0,1,3-.28,16,16,0,0,1,11.3,4.69L195.31,208Z"/>',
+    "code": '<path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/>',
+    "package": '<path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"/>',
+    "lifebuoy": '<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm39.1,131.79a47.84,47.84,0,0,0,0-55.58l28.5-28.49a87.83,87.83,0,0,1,0,112.56ZM96,128a32,32,0,1,1,32,32A32,32,0,0,1,96,128Zm88.28-67.6L155.79,88.9a47.84,47.84,0,0,0-55.58,0L71.72,60.4a87.83,87.83,0,0,1,112.56,0ZM60.4,71.72l28.5,28.49a47.84,47.84,0,0,0,0,55.58L60.4,184.28a87.83,87.83,0,0,1,0-112.56ZM71.72,195.6l28.49-28.5a47.84,47.84,0,0,0,55.58,0l28.49,28.5a87.83,87.83,0,0,1-112.56,0Z"/>',
+    "file-text": '<path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/>',
+    "presentation-chart": '<path d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176ZM104,120v24a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm32-16v40a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm32-16v56a8,8,0,0,1-16,0V88a8,8,0,0,1,16,0Z"/>',
+    "phone-call": '<path d="M144.27,45.93a8,8,0,0,1,9.8-5.66,86.22,86.22,0,0,1,61.66,61.66,8,8,0,0,1-5.66,9.8A8.23,8.23,0,0,1,208,112a8,8,0,0,1-7.73-5.94,70.35,70.35,0,0,0-50.33-50.33A8,8,0,0,1,144.27,45.93Zm-2.33,41.8c13.79,3.68,22.65,12.54,26.33,26.33A8,8,0,0,0,176,120a8.23,8.23,0,0,0,2.07-.27,8,8,0,0,0,5.66-9.8c-5.12-19.16-18.5-32.54-37.66-37.66a8,8,0,1,0-4.13,15.46Zm81.94,95.35A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z"/>'
+  };
+  function icon(name) {
+    return '<svg class="ic" viewBox="0 0 256 256" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false">' + (ICON[name] || "") + '</svg>';
+  }
+
   /* Every price is days x day rate at 350 to 550, which is why the
      columns stay in proportion. Changing the rate re-derives the
      whole table rather than nudging single lines. */
@@ -1005,7 +1361,7 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
     el.innerHTML =
       '<div class="card__body">' +
         '<div class="card__row">' +
-          '<h4 class="card__name"><i class="ph ph-' + s.icon + '" aria-hidden="true"></i>' + esc(s.name) + '</h4>' +
+          '<h4 class="card__name">' + icon(s.icon) + esc(s.name) + '</h4>' +
           '<span class="card__price">' + money(s.price[0], s.price[1]) + '</span>' +
         '</div>' +
         '<p class="card__days">' + days(s.days[0], s.days[1]) + '</p>' +
@@ -1207,6 +1563,14 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       });
     }, { rootMargin: "0px 0px -10% 0px", threshold: 0.06 });
     risers.forEach(function (el, i) {
+      /* The -10% bottom margin means a band already in the first
+         screen can sit below the observer's line and never fire.
+         Anything visible on load is revealed outright. */
+      var box = el.getBoundingClientRect();
+      if (box.top < window.innerHeight && box.bottom > 0) {
+        el.classList.add("in");
+        return;
+      }
       el.style.transitionDelay = Math.min(i % 5, 4) * 50 + "ms";
       reveal.observe(el);
     });
@@ -1231,6 +1595,477 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       targets.forEach(function (t) { spy.observe(t); });
     }
   }
+})();
+
+/* ---- the lit room ------------------------------------------
+   A field of points on a plane below the eye, projected by hand and
+   drawn to a canvas. Each point keeps the world x it was born with,
+   so as its depth falls its screen x sweeps outward: perspective
+   alone produces the parallax, and the room reads as deep.
+
+   One light sits at the far end, an oval pool on the plane with a
+   soft cone standing over it, the way a single lamp is aimed at the
+   one object in an otherwise dark room. It is what the space is
+   about, and everything drifts toward it.
+
+   No 3D transform is involved: a rotateX subtree rasterises at its
+   untransformed size and stair-steps every near-horizontal edge.
+   ------------------------------------------------------------ */
+(function () {
+  var canvas = document.getElementById("heroField");
+  var hero = document.getElementById("top");
+  if (!canvas || !hero || !canvas.getContext) return;
+
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var wide = window.matchMedia("(min-width: 1080px)");
+
+  var NEAR = 0.16;    /* recycle depth */
+  var FAR = 15;       /* spawn depth */
+  var EYE = 0.40;     /* camera height above the plane */
+  var SPEED = 0.33;   /* world units per second */
+
+  var w = 0, h = 0, dpr = 1, horizon = 0, focal = 0;
+  var points = [], motes = [];
+  var raf = 0, resizeRaf = 0, prev = 0, drift = 0;
+  var camX = 0, aimX = 0;
+  var live = false, animate = false;
+
+  /* the practice object: one particle set, three target shapes it
+     lerps between on a slow loop (parts, assembled, x-rayed) */
+  var shapePts = [];
+  var t = 0, rot = 0, phase = 0;
+  var STATE_A = 0, STATE_B = 1, STATE_C = 2;
+  var STATE_COLOR = ["#EDEDEB", "#EDEDEB", "#6E8CFF"];
+  var STATE_ALPHA = [0.62, 1.00, 0.72];
+  var STATE_RADIUS = [1.35, 1.70, 1.25];
+  var TILT_CT = Math.cos(-0.40), TILT_ST = Math.sin(-0.40);
+
+  /* World x is proportional to spawn depth so the plane still covers
+     the window once a point has swept forward. */
+  function place(p, z) {
+    p.z = z;
+    p.x = (Math.random() * 2 - 1) * z * 1.35;
+    p.j = 0.35 + Math.random() * 0.9;
+  }
+
+  function seed() {
+    var n = w < 900 ? 520 : (w < 1500 ? 900 : 1300);
+    points.length = 0;
+    for (var i = 0; i < n; i++) {
+      var p = {};
+      /* sqrt bias puts more points far away, the way an evenly
+         covered plane actually looks in perspective */
+      place(p, NEAR + Math.pow(Math.random(), 0.62) * (FAR - NEAR));
+      points.push(p);
+    }
+
+    /* Motes above the horizon. They take the pointer parallax only,
+       so the air reads as much further off than the floor. */
+    var m = w < 900 ? 90 : (w < 1500 ? 150 : 210);
+    motes.length = 0;
+    for (var k = 0; k < m; k++) {
+      motes.push({
+        u: Math.random(),
+        v: Math.random(),
+        d: 0.12 + Math.random() * 0.5,
+        j: 0.14 + Math.random() * 0.34
+      });
+    }
+
+    buildStates();
+  }
+
+  /* Three stacked slabs, echoing the practice stack on the page. Each
+     particle gets a canonical x-ray edge position, a solid face
+     position, and an exploded-parts position derived from the face
+     position, so the same dots carry all three readings. */
+  function buildStates() {
+    var slabs = [
+      { hx: 0.95, hy: 0.30, hz: 0.70, cx: 0.00, cy: -0.80, cz: 0 },
+      { hx: 0.80, hy: 0.28, hz: 0.60, cx: 0.26, cy: 0.00, cz: 0 },
+      { hx: 0.62, hy: 0.26, hz: 0.48, cx: -0.14, cy: 0.78, cz: 0 }
+    ];
+    var offsets = [
+      { x: -0.69, y: -0.33, z: 0.06 },
+      { x: 0.75, y: 0.03, z: -0.15 },
+      { x: -0.21, y: 0.57, z: 0.27 }
+    ];
+    /* the 12 box edges: axis that varies, and the fixed sign on the
+       other two axes (in x,y,z order skipping the varying one) */
+    var EDGES = [
+      ["x", -1, -1], ["x", -1, 1], ["x", 1, -1], ["x", 1, 1],
+      ["y", -1, -1], ["y", -1, 1], ["y", 1, -1], ["y", 1, 1],
+      ["z", -1, -1], ["z", -1, 1], ["z", 1, -1], ["z", 1, 1]
+    ];
+    var FLAW_EDGE = 7; /* ['y',1,1] on the middle slab: its +x,+z vertical edge */
+
+    var n = w < 900 ? 260 : (w < 1500 ? 420 : 560);
+    var per = Math.floor(n / 3);
+    var counts = [per, per, n - per * 2];
+
+    shapePts.length = 0;
+    for (var si = 0; si < 3; si++) {
+      var slab = slabs[si], off = offsets[si], count = counts[si];
+      var perEdge = Math.ceil(count / 12);
+
+      for (var j = 0; j < count; j++) {
+        var edgeIdx = j % 12;
+        var edge = EDGES[edgeIdx];
+        var et = ((Math.floor(j / 12) + 0.5) / perEdge) * 2 - 1;
+        var ex, ey, ez;
+        if (edge[0] === "x") { ex = et * slab.hx; ey = edge[1] * slab.hy; ez = edge[2] * slab.hz; }
+        else if (edge[0] === "y") { ex = edge[1] * slab.hx; ey = et * slab.hy; ez = edge[2] * slab.hz; }
+        else { ex = edge[1] * slab.hx; ey = edge[2] * slab.hy; ez = et * slab.hz; }
+        var cX = slab.cx + ex + (Math.random() * 2 - 1) * 0.01;
+        var cY = slab.cy + ey + (Math.random() * 2 - 1) * 0.01;
+        var cZ = slab.cz + ez + (Math.random() * 2 - 1) * 0.01;
+
+        /* a random point on one of the 6 faces, for the solid state */
+        var face = Math.floor(Math.random() * 6);
+        var u = Math.random() * 2 - 1, v = Math.random() * 2 - 1;
+        var fx, fy, fz;
+        if (face === 0) { fx = slab.hx; fy = u * slab.hy; fz = v * slab.hz; }
+        else if (face === 1) { fx = -slab.hx; fy = u * slab.hy; fz = v * slab.hz; }
+        else if (face === 2) { fx = u * slab.hx; fy = slab.hy; fz = v * slab.hz; }
+        else if (face === 3) { fx = u * slab.hx; fy = -slab.hy; fz = v * slab.hz; }
+        else if (face === 4) { fx = u * slab.hx; fy = v * slab.hy; fz = slab.hz; }
+        else { fx = u * slab.hx; fy = v * slab.hy; fz = -slab.hz; }
+        var bX = slab.cx + fx + (Math.random() * 2 - 1) * 0.01;
+        var bY = slab.cy + fy + (Math.random() * 2 - 1) * 0.01;
+        var bZ = slab.cz + fz + (Math.random() * 2 - 1) * 0.01;
+
+        /* the solid, pushed apart into loose unassembled parts */
+        var aX = bX + off.x + (Math.random() * 2 - 1) * 0.11;
+        var aY = bY + off.y + (Math.random() * 2 - 1) * 0.11;
+        var aZ = bZ + off.z + (Math.random() * 2 - 1) * 0.11;
+
+        shapePts.push({
+          a_x: aX, a_y: aY, a_z: aZ,
+          b_x: bX, b_y: bY, b_z: bZ,
+          c_x: cX, c_y: cY, c_z: cZ,
+          ph: Math.random() * 6.2832,
+          flaw: (si === 1 && edgeIdx === FLAW_EDGE) ? 1 : 0
+        });
+      }
+    }
+  }
+
+  function measure() {
+    var box = hero.getBoundingClientRect();
+    w = Math.max(1, Math.round(box.width));
+    h = Math.max(1, Math.round(box.height));
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    horizon = Math.round(h * 0.34);
+    focal = w * 0.60;
+  }
+
+  /* The lamp. An oval pool of light lying on the plane at the far
+     end, and a soft cone standing over it. Drawn before everything
+     else, so the points cross in front of it. */
+  function drawLamp(cx) {
+    var pw = Math.min(w * 0.42, 620);
+    var ph = Math.max(56, h * 0.16);
+
+    ctx.save();
+    ctx.translate(cx, horizon + ph * 0.34);
+    ctx.scale(1, ph / pw);
+    var pool = ctx.createRadialGradient(0, 0, 0, 0, 0, pw);
+    pool.addColorStop(0, "rgba(237,237,235,.20)");
+    pool.addColorStop(0.34, "rgba(237,237,235,.075)");
+    pool.addColorStop(0.72, "rgba(237,237,235,.018)");
+    pool.addColorStop(1, "rgba(237,237,235,0)");
+    ctx.fillStyle = pool;
+    ctx.beginPath();
+    ctx.arc(0, 0, pw, 0, 6.2832);
+    ctx.fill();
+    ctx.restore();
+
+    /* the haze standing over the pool. Radial in both axes, so the
+       light has no edge to give itself away as a drawn shape. */
+    var hw = Math.min(w * 0.22, 330);
+    var hh = h * 0.40;
+    ctx.save();
+    ctx.translate(cx, horizon - hh * 0.18);
+    ctx.scale(1, hh / hw);
+    var haze = ctx.createRadialGradient(0, 0, 0, 0, 0, hw);
+    haze.addColorStop(0, "rgba(237,237,235,.085)");
+    haze.addColorStop(0.42, "rgba(237,237,235,.028)");
+    haze.addColorStop(1, "rgba(237,237,235,0)");
+    ctx.fillStyle = haze;
+    ctx.beginPath();
+    ctx.arc(0, 0, hw, 0, 6.2832);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  /* The practice object: same particle set throughout, lerped between
+     the parts / solid / x-ray targets on the timeline advanced in
+     frame(). Colour changes are cross-faded in two passes so the
+     fillStyle is only ever set once per pass, not per particle. */
+  function drawStates() {
+    var n = shapePts.length;
+    if (!n) return;
+
+    var segFrom, segTo, segMix, segHold, curRot;
+    if (reduce.matches) {
+      curRot = 0.5;
+      segFrom = STATE_B; segTo = STATE_B; segMix = 1; segHold = false;
+    } else {
+      curRot = rot;
+      if (t < 2.4) { segFrom = STATE_A; segTo = STATE_A; segMix = 0; segHold = true; phase = 0; }
+      else if (t < 4.0) { segFrom = STATE_A; segTo = STATE_B; segMix = ease((t - 2.4) / 1.6); segHold = false; phase = 1; }
+      else if (t < 7.6) { segFrom = STATE_B; segTo = STATE_B; segMix = 1; segHold = true; phase = 2; }
+      else if (t < 9.2) { segFrom = STATE_B; segTo = STATE_C; segMix = ease((t - 7.6) / 1.6); segHold = false; phase = 3; }
+      else if (t < 13.0) { segFrom = STATE_C; segTo = STATE_C; segMix = 1; segHold = true; phase = 4; }
+      else if (t < 14.6) { segFrom = STATE_C; segTo = STATE_A; segMix = ease((t - 13.0) / 1.6); segHold = false; phase = 5; }
+      else { segFrom = STATE_A; segTo = STATE_A; segMix = 0; segHold = true; phase = 6; }
+    }
+
+    var ocx = w * 0.5 + camX * focal * 0.09;
+    /* The form hangs lower than it rises: the parts state reaches
+       2.56 below the origin and 2.09 above it. Centring on the origin
+       therefore parks the visible mass too high, so the origin is
+       offset by half that difference. 0.62 rather than 0.5 sits it
+       below the middle of the sky, so the parts state settles across
+       the horizon instead of hanging above it. */
+    var S = Math.min(w * 0.066, h * 0.060);
+    var ocy = horizon * 0.62 - S * 0.2355;
+    var cs = Math.cos(curRot), sn = Math.sin(curRot);
+    var wobbleOn = segHold && !reduce.matches;
+
+    var alphaMult = STATE_ALPHA[segFrom] + (STATE_ALPHA[segTo] - STATE_ALPHA[segFrom]) * segMix;
+    var radiusMult = STATE_RADIUS[segFrom] + (STATE_RADIUS[segTo] - STATE_RADIUS[segFrom]) * segMix;
+    var sameColor = STATE_COLOR[segFrom] === STATE_COLOR[segTo];
+    var passCount = sameColor ? 1 : 2;
+    var flawMix = segTo === STATE_C ? segMix : 0;
+
+    var i, sp, fx, fy, fz, tx, ty, tz, lx, ly, lz, wob;
+    var rx, rz, ry, rz2, k, px, py, r, a, pass, stateIdx, weight;
+
+    for (pass = 0; pass < passCount; pass++) {
+      stateIdx = passCount === 1 ? segTo : (pass === 0 ? segFrom : segTo);
+      weight = passCount === 1 ? 1 : (pass === 0 ? 1 - segMix : segMix);
+      if (weight <= 0.004) continue;
+      ctx.fillStyle = STATE_COLOR[stateIdx];
+
+      for (i = 0; i < n; i++) {
+        sp = shapePts[i];
+        if (segFrom === STATE_A) { fx = sp.a_x; fy = sp.a_y; fz = sp.a_z; }
+        else if (segFrom === STATE_B) { fx = sp.b_x; fy = sp.b_y; fz = sp.b_z; }
+        else { fx = sp.c_x; fy = sp.c_y; fz = sp.c_z; }
+        if (segTo === STATE_A) { tx = sp.a_x; ty = sp.a_y; tz = sp.a_z; }
+        else if (segTo === STATE_B) { tx = sp.b_x; ty = sp.b_y; tz = sp.b_z; }
+        else { tx = sp.c_x; ty = sp.c_y; tz = sp.c_z; }
+
+        lx = fx + (tx - fx) * segMix;
+        ly = fy + (ty - fy) * segMix;
+        lz = fz + (tz - fz) * segMix;
+        if (wobbleOn) {
+          wob = 1 + Math.sin(t * 0.55 + sp.ph) * 0.022;
+          lx *= wob; ly *= wob; lz *= wob;
+        }
+
+        rx = lx * cs + lz * sn;
+        rz = lz * cs - lx * sn;
+        ry = ly * TILT_CT - rz * TILT_ST;
+        rz2 = rz * TILT_CT + ly * TILT_ST;
+        k = 3.5 / (3.5 - rz2);
+        if (k <= 0) continue;
+        px = ocx + rx * S * k;
+        py = ocy + ry * S * k;
+
+        r = radiusMult * k;
+        if (r < 0.8) r = 0.8; else if (r > 2.8) r = 2.8;
+        a = alphaMult * weight;
+        if (a < 0) a = 0; else if (a > 1) a = 1;
+        ctx.globalAlpha = a;
+        if (r < 1) ctx.fillRect(px - r, py - r, r * 2, r * 2);
+        else { ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill(); }
+      }
+    }
+
+    /* the one flawed member: fades in with the x-ray, ordinary the
+       rest of the loop, so colour alone carries the meaning */
+    if (flawMix > 0.004) {
+      ctx.fillStyle = "#FF5FA8";
+      for (i = 0; i < n; i++) {
+        sp = shapePts[i];
+        if (!sp.flaw) continue;
+
+        lx = sp.b_x + (sp.c_x - sp.b_x) * segMix;
+        ly = sp.b_y + (sp.c_y - sp.b_y) * segMix;
+        lz = sp.b_z + (sp.c_z - sp.b_z) * segMix;
+
+        rx = lx * cs + lz * sn;
+        rz = lz * cs - lx * sn;
+        ry = ly * TILT_CT - rz * TILT_ST;
+        rz2 = rz * TILT_CT + ly * TILT_ST;
+        k = 3.5 / (3.5 - rz2);
+        if (k <= 0) continue;
+        px = ocx + rx * S * k;
+        py = ocy + ry * S * k;
+
+        r = 1.9 * k * flawMix;
+        if (r < 0.8) r = 0.8; else if (r > 2.8) r = 2.8;
+        a = 0.95 * flawMix;
+        if (a > 1) a = 1;
+        ctx.globalAlpha = a;
+        if (r < 1) ctx.fillRect(px - r, py - r, r * 2, r * 2);
+        else { ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill(); }
+      }
+    }
+
+    ctx.globalAlpha = 1;
+  }
+
+  function ease(m) { return m * m * (3 - 2 * m); }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    var cx = w * 0.5 + camX * focal * 0.16;
+    var i, x, y;
+
+    drawLamp(cx);
+    drawStates();
+
+    ctx.fillStyle = "#EDEDEB";
+
+    for (i = 0; i < motes.length; i++) {
+      var m = motes[i];
+      x = (m.u * 1.3 - 0.15) * w + (camX + drift * m.d) * m.d * 260;
+      if (x < -4) x += w * 1.3;
+      if (x > w + 4) x -= w * 1.3;
+      y = m.v * horizon * 0.94;
+      ctx.globalAlpha = m.j;
+      ctx.fillRect(x, y, 1.4, 1.4);
+    }
+
+    for (i = 0; i < points.length; i++) {
+      var p = points[i];
+      var inv = 1 / p.z;
+      y = horizon + EYE * inv * focal;
+      if (y > h + 6) continue;
+      x = w * 0.5 + (p.x + camX) * inv * focal;
+      if (x < -6 || x > w + 6) continue;
+
+      var r = 3.0 / (p.z * 0.55 + 0.9);
+      if (r > 3.4) r = 3.4;
+      if (r < 0.55) r = 0.55;
+
+      /* fade in out of the haze, fade out as it passes the camera */
+      var a = p.j * 0.8;
+      if (p.z > FAR - 3.2) a *= (FAR - p.z) / 3.2;
+      if (p.z < NEAR + 0.8) a *= (p.z - NEAR) / 0.8;
+      if (a <= 0.006) continue;
+
+      /* the closer a point is to the lamp, the more of it it catches */
+      var lit = 1 - Math.min(1, Math.abs(x - cx) / (w * 0.42));
+      ctx.globalAlpha = Math.min(1, a * (0.72 + lit * 0.75));
+
+      if (r < 1) ctx.fillRect(x - r, y - r, r * 2, r * 2);
+      else { ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill(); }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    var dt = prev ? (now - prev) / 1000 : 0.016;
+    prev = now;
+    if (dt > 0.05) dt = 0.05;
+
+    camX += (aimX - camX) * Math.min(1, dt * 2.2);
+    drift += dt * 0.004;
+
+    if (!reduce.matches) {
+      t += dt;
+      if (t >= 16.2) t -= 16.2;
+      rot += dt * 0.15;
+    }
+
+    for (var i = 0; i < points.length; i++) {
+      var p = points[i];
+      p.z -= SPEED * dt;
+      if (p.z <= NEAR) place(p, FAR);
+    }
+    draw();
+  }
+
+  function start() { if (!raf && animate) { prev = 0; raf = requestAnimationFrame(frame); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  /* Only stores a number. The frame loop eases toward it, so there is
+     no work here and nothing is read from layout. */
+  function onPointer(e) {
+    aimX = -((e.clientX / window.innerWidth) - 0.5) * 0.7;
+  }
+
+  function onResize() {
+    if (resizeRaf) return;
+    resizeRaf = requestAnimationFrame(function () {
+      resizeRaf = 0;
+      if (!live) return;
+      measure();
+      seed();
+      if (!raf) draw();
+    });
+  }
+
+  var ro = null, io = null;
+
+  function teardown() {
+    stop();
+    if (ro) { ro.disconnect(); ro = null; }
+    if (io) { io.disconnect(); io = null; }
+    window.removeEventListener("resize", onResize);
+    window.removeEventListener("pointermove", onPointer);
+    ctx.clearRect(0, 0, w, h);
+    live = false;
+    animate = false;
+  }
+
+  function boot() {
+    if (live) return;
+    live = true;
+    animate = !reduce.matches;
+    measure();
+    seed();
+
+    /* the hero grows after the webfonts land, so watch the element */
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(onResize);
+      ro.observe(hero);
+    } else {
+      window.addEventListener("resize", onResize);
+    }
+
+    if (!animate) { draw(); return; }
+
+    if (wide.matches) {
+      window.addEventListener("pointermove", onPointer, { passive: true });
+    }
+
+    if ("IntersectionObserver" in window) {
+      io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) start(); else stop();
+      }, { threshold: 0 });
+      io.observe(hero);
+    } else {
+      start();
+    }
+    draw();
+  }
+
+  boot();
+  if (wide.addEventListener) wide.addEventListener("change", function () { teardown(); boot(); });
+  if (reduce.addEventListener) reduce.addEventListener("change", function () { teardown(); boot(); });
+  window.addEventListener("pagehide", teardown);
 })();
 </script>
 </body>

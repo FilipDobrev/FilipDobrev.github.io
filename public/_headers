@@ -2,8 +2,25 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+
+# The page is one file and it changes whenever the work does, so it is
+# revalidated every time rather than cached.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Fonts are content addressed by name and never edited in place. If a
+# face changes it ships under a new filename, so a year is safe.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=2592000
 
 /og.png
   Cache-Control: public, max-age=604800
@@ -12,4 +29,7 @@
   Cache-Control: public, max-age=3600
 
 /sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/llms.txt
   Cache-Control: public, max-age=3600
