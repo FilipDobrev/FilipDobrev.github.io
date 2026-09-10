@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Filip Dobrev, software engineer in Delft</title>
-<meta name="description" content="Filip Dobrev builds software, improves how teams ship it, and reviews the security of what is already running. Published prices, Delft, remote across Europe.">
+<title>Custom Software Development, Web Apps &amp; Security Audits</title>
+<meta name="description" content="Custom software development for web apps, APIs and cloud infrastructure, plus DevOps and security audits. Fixed scope, published prices, remote across Europe.">
 <meta name="theme-color" content="#14161C">
 <link rel="canonical" href="https://melotech.dev/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -12,17 +12,19 @@
 <meta property="og:site_name" content="Melotech">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://melotech.dev/">
-<meta property="og:title" content="Filip Dobrev, software engineer in Delft">
-<meta property="og:description" content="One engineer who builds it, improves how you ship it, and reviews its security. Published prices, Delft, remote across Europe.">
+<meta property="og:title" content="Custom Software Development, Web Apps &amp; Security Audits">
+<meta property="og:description" content="Custom software development for web apps, APIs and cloud infrastructure, plus DevOps and security audits. Fixed scope, published prices, remote across Europe.">
 <meta property="og:image" content="https://melotech.dev/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Filip Dobrev, software engineer at Uber. Build it, secure it, ship it.">
+<meta property="og:image:alt" content="Melotech. Software development, DevOps and security audits by Filip Dobrev.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Filip Dobrev, software engineer in Delft">
-<meta name="twitter:description" content="One engineer who builds it, improves how you ship it, and reviews its security. Published prices, Delft.">
+<meta name="twitter:title" content="Custom Software Development, Web Apps &amp; Security Audits">
+<meta name="twitter:description" content="Custom software development, web apps, APIs and cloud infrastructure, plus DevOps and security audits. Fixed scope, published prices.">
 <meta name="twitter:image" content="https://melotech.dev/og.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314161C'/%3E%3Cpath d='M11 22V10h10M11 16h7' stroke='%236E8CFF' stroke-width='2.2' fill='none' stroke-linecap='square'/%3E%3Ccircle cx='23' cy='22' r='2.4' fill='%23FF5FA8'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="fonts/gabarito-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -214,7 +216,7 @@ p{margin:0;text-wrap:pretty}
 .hero{
   position:relative;overflow:hidden;isolation:isolate;
   padding-top:clamp(64px,11vh,120px);
-  padding-bottom:clamp(86px,13vh,158px);
+  padding-bottom:clamp(118px,17.5vh,206px);
   min-height:calc(100dvh - var(--nav-h));
   display:flex;align-items:flex-end;
 }
@@ -255,7 +257,7 @@ p{margin:0;text-wrap:pretty}
   .hero{
     min-height:calc(100dvh - var(--nav-h));
     padding-top:clamp(96px,17vh,160px);
-    padding-bottom:clamp(56px,8vh,92px);
+    padding-bottom:clamp(92px,12.5vh,140px);
   }
   .hero h1{max-width:20ch}
   .hero__lede{max-width:34ch}
@@ -530,10 +532,19 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["ProfessionalService", "Organization"],
       "@id": "https://melotech.dev/#business",
       "name": "Melotech",
-      "alternateName": "Filip Dobrev, software engineer",
+      "alternateName": "Melotech software development and security audits",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://melotech.dev/#logo",
+        "url": "https://melotech.dev/img/logo-512.png",
+        "contentUrl": "https://melotech.dev/img/logo-512.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Melotech"
+      },
       "url": "https://melotech.dev/",
       "email": "filipdbrv@gmail.com",
       "description": "Software engineering, delivery improvement, and security review. Published prices. Based in Delft, working remotely across Europe.",
@@ -847,8 +858,8 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       "@type": "WebPage",
       "@id": "https://melotech.dev/#webpage",
       "url": "https://melotech.dev/",
-      "name": "Filip Dobrev, software engineer in Delft",
-      "description": "Software engineering, delivery improvement, and security review, with every price published.",
+      "name": "Custom Software Development, Web Apps & Security Audits",
+      "description": "Custom software development for web apps, APIs and cloud infrastructure, plus DevOps and security audits. Fixed scope, published prices, remote across Europe.",
       "isPartOf": { "@id": "https://melotech.dev/#website" },
       "about": { "@id": "https://melotech.dev/#business" },
       "primaryImageOfPage": "https://melotech.dev/og.png",
@@ -860,7 +871,8 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
       "url": "https://melotech.dev/",
       "name": "Melotech",
       "inLanguage": "en",
-      "publisher": { "@id": "https://melotech.dev/#business" }
+      "publisher": { "@id": "https://melotech.dev/#business" },
+      "image": { "@id": "https://melotech.dev/#logo" }
     }
   ]
 }
