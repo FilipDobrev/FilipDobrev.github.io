@@ -1,0 +1,40 @@
+{
+  "dayRateMin": 350,
+  "dayRateMax": 550,
+  "workedAt": [
+    "Uber",
+    "TU Delft",
+    "It Goes Forward",
+    "Vera Connect"
+  ],
+  "retainers": [
+    {
+      "title": "Retained upkeep",
+      "price": "€100 – 350 / month",
+      "description": "Dependency and security updates, certificate and backup checks, uptime monitoring, and a person who already knows your system when something breaks."
+    },
+    {
+      "title": "Embedded with your team",
+      "price": "€350 – 550 / day",
+      "description": "Booked days inside your team, your board and your standups. For when the work is continuous and a fixed scope would only get in the way."
+    }
+  ],
+  "credentials": [
+    {
+      "title": "MSc Computer Science, Cyber Security",
+      "place": "TU Delft"
+    },
+    {
+      "title": "BSc Computer Science & Engineering, Cum Laude",
+      "place": "TU Delft"
+    },
+    {
+      "title": "Teaching Assistant, Cryptography",
+      "place": "TU Delft"
+    },
+    {
+      "title": "Tsinghua University",
+      "place": "Beijing, China"
+    }
+  ]
+}

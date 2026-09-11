@@ -1,0 +1,154 @@
+{
+  "services": [
+    {
+      "name": "Marketing site",
+      "practice": "build",
+      "icon": "browser",
+      "daysMin": 1,
+      "daysMax": 3,
+      "priceMin": 400,
+      "priceMax": 1500,
+      "description": "Nobody logs in. A few pages that load fast, read well on a phone, and come with working backups and sensible security headers."
+    },
+    {
+      "name": "API backend",
+      "practice": "build",
+      "icon": "plugs",
+      "daysMin": 5,
+      "daysMax": 12,
+      "priceMin": 1800,
+      "priceMax": 6500,
+      "description": "The service layer on its own. Data model, documented endpoints, authentication and authorization, and a migration path that will not lock you in."
+    },
+    {
+      "name": "Web application",
+      "practice": "build",
+      "icon": "squares-four",
+      "daysMin": 12,
+      "daysMax": 25,
+      "priceMin": 4200,
+      "priceMax": 13500,
+      "description": "The API above, plus the interface people actually use. Accounts, screens, an admin side. One application rather than a whole product."
+    },
+    {
+      "name": "Product, first version",
+      "practice": "build",
+      "icon": "rocket-launch",
+      "daysMin": 30,
+      "daysMax": 55,
+      "priceMin": 10500,
+      "priceMax": 30000,
+      "description": "A web application plus the parts that make it a business: signup, billing, a marketing site, and the operations to keep it running."
+    },
+    {
+      "name": "Integration or migration",
+      "practice": "build",
+      "icon": "arrows-merge",
+      "daysMin": 3,
+      "daysMax": 12,
+      "priceMin": 1000,
+      "priceMax": 6500,
+      "description": "Moving off a dying system, or connecting two that were never meant to talk. With a rollback plan, not a hopeful weekend."
+    },
+    {
+      "name": "Engineering workflow audit",
+      "practice": "improve",
+      "icon": "magnifying-glass",
+      "daysMin": 2,
+      "daysMax": 4,
+      "priceMin": 700,
+      "priceMax": 2200,
+      "description": "Days spent inside your process. Where the time actually goes, what breaks repeatedly, and a written plan ranked by hours saved per month."
+    },
+    {
+      "name": "Automate a manual process",
+      "practice": "improve",
+      "icon": "lightning",
+      "daysMin": 2,
+      "daysMax": 8,
+      "priceMin": 700,
+      "priceMax": 4400,
+      "description": "The spreadsheet somebody rebuilds every Monday, or the data somebody copies between two systems by hand."
+    },
+    {
+      "name": "Deploy pipeline",
+      "practice": "improve",
+      "icon": "flow-arrow",
+      "daysMin": 3,
+      "daysMax": 8,
+      "priceMin": 1000,
+      "priceMax": 4400,
+      "description": "Tests run automatically, deploys stop being an event, and rollback takes one command instead of an evening."
+    },
+    {
+      "name": "Monitoring and alerting",
+      "practice": "improve",
+      "icon": "pulse",
+      "daysMin": 3,
+      "daysMax": 7,
+      "priceMin": 1000,
+      "priceMax": 3800,
+      "description": "You find out about the outage before your customers tell you. Uptime, errors, certificates, and alerts worth waking up for."
+    },
+    {
+      "name": "Onboarding and documentation",
+      "practice": "improve",
+      "icon": "book-open-text",
+      "daysMin": 3,
+      "daysMax": 6,
+      "priceMin": 1000,
+      "priceMax": 3300,
+      "description": "Written so a new developer is useful in days rather than months, and so one person leaving is not an emergency."
+    },
+    {
+      "name": "Incident cleanup",
+      "practice": "review",
+      "icon": "first-aid-kit",
+      "daysMin": 1,
+      "daysMax": 2,
+      "priceMin": 400,
+      "priceMax": 1100,
+      "description": "Defaced, redirecting, flagged by Google, or suspended by your host. Entry point found, persistence removed, credentials rotated, delisting handled."
+    },
+    {
+      "name": "External exposure assessment",
+      "practice": "review",
+      "icon": "binoculars",
+      "daysMin": 2,
+      "daysMax": 3,
+      "priceMin": 700,
+      "priceMax": 1650,
+      "description": "What an attacker sees before touching anything. DNS, TLS, headers, exposed panels, leaked credentials, known CVEs in what you run."
+    },
+    {
+      "name": "Secrets and access review",
+      "practice": "review",
+      "icon": "key",
+      "daysMin": 3,
+      "daysMax": 7,
+      "priceMin": 1000,
+      "priceMax": 3800,
+      "description": "Where your keys live, who can reach them, how they rotate, and what already leaked into git history or a CI log."
+    },
+    {
+      "name": "Application security review",
+      "practice": "review",
+      "icon": "shield-check",
+      "daysMin": 5,
+      "daysMax": 10,
+      "priceMin": 1750,
+      "priceMax": 5500,
+      "description": "One codebase, read properly. Authentication, access control, injection, sessions, uploads, secrets, and the dependency chain."
+    },
+    {
+      "name": "Interface and usability review",
+      "practice": "review",
+      "icon": "cursor-click",
+      "daysMin": 3,
+      "daysMax": 7,
+      "priceMin": 1000,
+      "priceMax": 3800,
+      "description": "Where your users get stuck, give up, or do the wrong thing. Every problem written down with the screen it happens on, ranked by how much it costs you, and a concrete fix for each one."
+    }
+  ]
+}

@@ -2,8 +2,9 @@
   "name": "melotech-site",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "build": "node build.js",
+    "dev": "node build.js && wrangler dev",
+    "deploy": "node build.js && wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.128.0"

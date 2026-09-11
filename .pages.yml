@@ -1,0 +1,110 @@
+# Pages CMS config. Edits commit JSON under content/, and the Cloudflare
+# build runs build.js to write them into public/index.html and llms.txt.
+content:
+  - name: services
+    label: Services & prices
+    type: file
+    path: content/services.json
+    format: json
+    fields:
+      - name: services
+        label: Services
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            type: string
+            required: true
+            description: Must be unique.
+          - name: practice
+            type: select
+            required: true
+            options:
+              values:
+                - { name: build, label: Build }
+                - { name: improve, label: Improve }
+                - { name: review, label: Review }
+          - name: icon
+            type: select
+            required: true
+            options:
+              values: [browser, plugs, squares-four, rocket-launch, arrows-merge, magnifying-glass, lightning, flow-arrow, pulse, book-open-text, first-aid-kit, binoculars, key, shield-check, cursor-click, code, package, lifebuoy, file-text, presentation-chart, phone-call]
+          - name: daysMin
+            label: Days, from
+            type: number
+            required: true
+            options: { min: 0 }
+          - name: daysMax
+            label: Days, to
+            type: number
+            required: true
+            options: { min: 0 }
+          - name: priceMin
+            label: Price from (EUR)
+            type: number
+            required: true
+            options: { min: 0 }
+          - name: priceMax
+            label: Price to (EUR)
+            type: number
+            required: true
+            options: { min: 0 }
+          - name: description
+            type: text
+            required: true
+
+  - name: site
+    label: Site details
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: dayRateMin
+        label: Day rate from (EUR)
+        type: number
+        required: true
+        options: { min: 0 }
+      - name: dayRateMax
+        label: Day rate to (EUR)
+        type: number
+        required: true
+        options: { min: 0 }
+      - name: workedAt
+        label: Worked at
+        type: string
+        list: true
+      - name: retainers
+        label: Ongoing work
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            type: string
+            required: true
+          - name: price
+            type: string
+            required: true
+            description: Shown as written, for example "€100 – 350 / month".
+          - name: description
+            type: text
+            required: true
+      - name: credentials
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            type: string
+            required: true
+          - name: place
+            type: string
+            required: true

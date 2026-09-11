@@ -1,13 +1,17 @@
 # Melotech
 
-> Filip Dobrev, a software engineer in Delft, Netherlands, working remotely
-> across Europe. One person, three practices: building software, improving
-> how a team ships it, and reviewing the security of what is already running.
+> Melotech builds custom software for businesses: web apps, websites,
+> internal tools, automation and new products, and audits the security of
+> what is already running. Work is scoped to revenue gained or hours saved
+> per month, and every price is published. Three practices: building
+> software, improving how a team ships it, and reviewing what is live.
 
+<!-- cms:pricing -->
 Every price on the site is public. Work is quoted as days multiplied by a
-day rate of 350 to 550 euro. There are fourteen fixed services plus a
+day rate of 350 to 550 euro. There are fifteen fixed services plus a
 retainer. A visitor can tick the services they need and read the total
 without contacting anyone first.
+<!-- /cms:pricing -->
 
 ## Practices
 
@@ -22,6 +26,7 @@ without contacting anyone first.
 
 ## Services and prices
 
+<!-- cms:services -->
 Build
 - Marketing site, 1 to 3 days, 400 to 1500 euro
 - API backend, 5 to 12 days, 1800 to 6500 euro
@@ -42,6 +47,7 @@ Review
 - Secrets and access review, 3 to 7 days, 1000 to 3800 euro
 - Application security review, 5 to 10 days, 1750 to 5500 euro
 - Interface and usability review, 3 to 7 days, 1000 to 3800 euro
+<!-- /cms:services -->
 
 Retainer: booked days inside the team, priced separately, for work that is
 continuous and where a fixed scope would get in the way.
