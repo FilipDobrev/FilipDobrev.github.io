@@ -8,7 +8,7 @@
 
 <!-- cms:pricing -->
 Every price on the site is public. Work is quoted as days multiplied by a
-day rate of 350 to 550 euro. There are fifteen fixed services plus a
+day rate of 350 to 550 euro. There are sixteen fixed services plus a
 retainer. A visitor can tick the services they need and read the total
 without contacting anyone first.
 <!-- /cms:pricing -->
@@ -33,6 +33,7 @@ Build
 - Web application, 12 to 25 days, 4200 to 13500 euro
 - Product, first version, 30 to 55 days, 10500 to 30000 euro
 - Integration or migration, 3 to 12 days, 1000 to 6500 euro
+- Test, 3 to 7 days, 400 to 1500 euro
 
 Improve
 - Engineering workflow audit, 2 to 4 days, 700 to 2200 euro
