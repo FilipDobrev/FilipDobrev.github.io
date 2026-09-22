@@ -149,16 +149,6 @@
       "priceMin": 1000,
       "priceMax": 3800,
       "description": "Where your users get stuck, give up, or do the wrong thing. Every problem written down with the screen it happens on, ranked by how much it costs you, and a concrete fix for each one."
-    },
-    {
-      "name": "Test",
-      "practice": "build",
-      "icon": "first-aid-kit",
-      "daysMin": 3,
-      "daysMax": 7,
-      "priceMin": 400,
-      "priceMax": 1500,
-      "description": "testing adding an item"
     }
   ]
 }
