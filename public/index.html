@@ -217,7 +217,7 @@ p{margin:0;text-wrap:pretty}
 .hero{
   position:relative;overflow:hidden;isolation:isolate;
   padding-top:clamp(64px,11vh,120px);
-  padding-bottom:clamp(118px,17.5vh,206px);
+  padding-bottom:clamp(80px,11.5vh,150px);
   min-height:calc(100dvh - var(--nav-h));
   display:flex;align-items:flex-end;
 }
@@ -239,9 +239,10 @@ p{margin:0;text-wrap:pretty}
     rgba(20,22,28,.86) 100%);
 }
 .hero__grid{position:relative;z-index:2;width:100%;text-align:center}
-.hero__eyebrow{margin-bottom:20px}
 .hero h1{
-  font-size:clamp(2.55rem,6.6vw,5.9rem);
+  /* height is in the clamp too: on a short window the object above
+     the type has nowhere to go, and a width-only size runs into it. */
+  font-size:clamp(2.55rem,min(6.6vw,10.5vh),5.9rem);
   max-width:21ch;
   margin-inline:auto;
 }
@@ -258,7 +259,7 @@ p{margin:0;text-wrap:pretty}
   .hero{
     min-height:calc(100dvh - var(--nav-h));
     padding-top:clamp(96px,17vh,160px);
-    padding-bottom:clamp(92px,12.5vh,140px);
+    padding-bottom:clamp(56px,8vh,96px);
   }
   .hero h1{max-width:20ch}
   .hero h1 span{white-space:normal}
@@ -932,7 +933,6 @@ h1,h2,[id]{scroll-margin-top:calc(var(--nav-h) + 22px)}
     <canvas class="hero__field" id="heroField" aria-hidden="true"></canvas>
     <div class="hero__veil" aria-hidden="true"></div>
     <div class="wrap hero__grid">
-      <p class="eyebrow hero__eyebrow">Custom software development</p>
       <h1><span>Custom software</span> <span>that grows</span> <span>your business.</span></h1>
       <div class="hero__foot">
         <p class="lede hero__lede">Business web apps, websites, internal tools and new products. Every price on this page.</p>
